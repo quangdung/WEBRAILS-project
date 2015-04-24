@@ -1,0 +1,57 @@
+cahier des charges.txt
+
+
+------------------------------------------------------------------------------
+
+Admin
+
+Droit (et Pouvoir) :
+- tout gérer : gérant, client, location, ferme, animal + typeTache
+
+------------------------------------------------------------------------------
+
+Ferme
+- appartient à un seul gérant
+
+------------------------------------------------------------------------------
+
+Animal
+- appartient à une seule ferme
+- un animal peut avoir plusieurs types de tâches
+- est loué uniquement pour son type de tâche disponible
+
+- disponibilité : du jour actuel, calculé selon la date de location et sa durée
+(- fonction de réserver à l'avance)
+
+AJAX
+- filtre de recherche : type de tâches
+(- filtre de recherhe : date disponible)
+
+------------------------------------------------------------------------------
+
+TypeTache
+- types : trait, reproduction, production, compagnie, (utilitaire ?)
+
+
+------------------------------------------------------------------------------
+
+Gérant
+- gérer : ferme, animal
+- peut avoir plusieurs fermes
+
+------------------------------------------------------------------------------
+
+Client (paysan)
+- conclure une location
+
+------------------------------------------------------------------------------
+
+Location
+- 
+
+------------------------------------------------------------------------------
+
+Visiteur : 
+- créer un compte membre (client/paysan)
+
+
