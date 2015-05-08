@@ -15,11 +15,11 @@ default: &default
   pool: 5
   username: root
   password:
-  host: localhost
+  socket: /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
 
 development:
   <<: *default
-  database: coup_de_pate_development
+  database: coup_de_pate
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

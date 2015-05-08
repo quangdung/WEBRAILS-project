@@ -1,0 +1,55 @@
+/Users/qdn/.rvm/rubies/ruby-1.9.3-p551/bin/ruby -r ./siteconf20150508-62904-f8qqs9.rb extconf.rb 
+checking for rb_method_entry_t.called_id in method.h... yes
+checking for vm_core.h... yes
+checking for iseq.h... yes
+checking for insns.inc... yes
+checking for insns_info.inc... yes
+checking for eval_intern.h... yes
+checking for struct iseq_line_info_entry in vm_core.h,iseq.h... no
+checking for struct iseq_insn_info_entry in vm_core.h,iseq.h... yes
+checking for if rb_iseq_compile_with_option was added an argument filepath... yes
+creating Makefile
+
+make  clean
+
+make
+compiling breakpoint.c
+compiling ruby_debug.c
+ruby_debug.c: In function 'save_call_frame':
+ruby_debug.c:493:31: warning: operation on 'debug_context->frames' may be undefined [-Wsequence-point]
+         debug_context->frames = REALLOC_N(debug_context->frames, debug_frame_t, debug_context->stack_len);
+                               ^
+ruby_debug.c: In function 'context_frame_id':
+ruby_debug.c:1767:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     rb_iseq_t *iseq = cfp->iseq;
+     ^
+ruby_debug.c:1756:8: warning: unused variable 'id' [-Wunused-variable]
+     ID id;
+        ^
+ruby_debug.c: In function 'context_frame_file':
+ruby_debug.c:1828:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     rb_iseq_t *iseq = GET_FRAME->info.runtime.cfp->iseq;
+     ^
+ruby_debug.c: In function 'context_jump':
+ruby_debug.c:2405:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             if ((cfp->pc - cfp->iseq->iseq_encoded) >= (cfp->iseq->iseq_size - 1))
+                                                     ^
+ruby_debug.c:2419:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for (i = 0; i < cfp->iseq->insn_info_size; i++)
+                           ^
+In file included from ruby_debug.c:9:0:
+ruby_debug.c: At top level:
+/Users/qdn/.rvm/src/ruby-1.9.3-p551/insns_info.inc:666:1: warning: 'insn_name' defined but not used [-Wunused-function]
+ insn_name(VALUE insn)
+ ^
+/Users/qdn/.rvm/src/ruby-1.9.3-p551/insns_info.inc:672:1: warning: 'insn_op_types' defined but not used [-Wunused-function]
+ insn_op_types(VALUE insn)
+ ^
+/Users/qdn/.rvm/src/ruby-1.9.3-p551/insns_info.inc:678:1: warning: 'insn_op_type' defined but not used [-Wunused-function]
+ insn_op_type(VALUE insn, long pos)
+ ^
+linking shared-object ruby_debug.bundle
+
+make  install
+/usr/bin/install -c -m 0755 ruby_debug.bundle .gem.20150508-62904-190ufyt
+installing default ruby_debug libraries

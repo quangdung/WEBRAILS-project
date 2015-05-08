@@ -1,0 +1,14 @@
+<h2>Spécification des rôles joués par <%= @user.prenom %> <%= @user.prenom %></h2>
+<%= form_for(@user, :url => save_roles_user_path(@user), method: :put) do |f| %>
+  <% for role in Role.all %>
+    <div>
+      <%= check_box_tag 'user[role_ids][]', role.id, @user.roles.include?(role) %>
+      <%= role.name %>
+    </div>
+  <% end %>
+
+  <div class='actions'>
+    <%= f.submit 'Sauvegarder' %>
+  </div>
+
+<% end %>

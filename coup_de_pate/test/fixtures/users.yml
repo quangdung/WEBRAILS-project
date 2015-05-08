@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: White
+  prenom: John
+  telephone: +41 78 111 22 33
+
+two:
+  nom: Blue
+  prenom: Walter
+  telephone: +41 79 444 55 66
