@@ -12,7 +12,13 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
-/config/database.yml
+# database
+/coup_de_pate/config/database.yml
+
+# IDE RubyMine
+/coup_de_pate/.idea
+/coup_de_pate/.idea/*
+/coup_de_pate/.idea/*/*
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
