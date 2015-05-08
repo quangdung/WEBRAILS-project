@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  nom: "Vache laitière"
+
+two:
+  id: 2
+  nom: Taureau
+
+a:
+  id: 3
+  nom: Boeuf
+
+b:
+  id: 4
+  nom: Chèvre
+
+c:
+  id: 5
+  nom: Bouc
+
+d:
+  id: 6
+  nom: Chat
+
+e:
+  id: 7
+  nom: Chien
+
+f:
+  id: 8
+  nom: Poule
+
+g:
+  id: 9
+  nom: Coq

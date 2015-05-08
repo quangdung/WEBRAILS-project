@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-05-08
+  dureeJour: 1
+  animal_id: 1
+  paysan_id: 1
+  statusLocation_id: MyString
+
+two:
+  date: 2015-05-08
+  dureeJour: 1
+  animal_id: 1
+  paysan_id: 1
+  statusLocation_id: MyString

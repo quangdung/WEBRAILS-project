@@ -1,0 +1,37 @@
+<%= form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :dureeJour %><br>
+    <%= f.number_field :dureeJour %>
+  </div>
+  <div class="field">
+    <%= f.label :animal_id %><br>
+    <%= f.number_field :animal_id %>
+  </div>
+  <div class="field">
+    <%= f.label :paysan_id %><br>
+    <%= f.number_field :paysan_id %>
+  </div>
+  <div class="field">
+    <%= f.label :statusLocation_id %><br>
+    <%= f.text_field :statusLocation_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

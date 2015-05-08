@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  nom: "En attente"
+
+two:
+  id: 2
+  nom: Confirmé
+
+three:
+  id: 3
+  nom: Annulé
