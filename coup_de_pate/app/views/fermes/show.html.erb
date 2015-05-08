@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @ferme.nom %>
+</p>
+
+<p>
+  <strong>Adresse:</strong>
+  <%= @ferme.adresse %>
+</p>
+
+<p>
+  <strong>Gerant:</strong>
+  <%= @ferme.gerant_id %>
+</p>
+
+<%= link_to 'Edit', edit_ferme_path(@ferme) %> |
+<%= link_to 'Back', fermes_path %>

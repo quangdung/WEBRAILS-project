@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  nom: trait
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000
+
+two:
+  id: 2
+  nom: reproduction
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000
+
+a:
+  id: 3
+  nom: production
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000
+
+b:
+  id: 4
+  nom: utilitaire
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000
+
+c:
+  id: 5
+  nom: compagnie
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @location.date %>
+</p>
+
+<p>
+  <strong>Dureejour:</strong>
+  <%= @location.dureeJour %>
+</p>
+
+<p>
+  <strong>Animal:</strong>
+  <%= @location.animal_id %>
+</p>
+
+<p>
+  <strong>Paysan:</strong>
+  <%= @location.paysan_id %>
+</p>
+
+<p>
+  <strong>Statuslocation:</strong>
+  <%= @location.statusLocation_id %>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

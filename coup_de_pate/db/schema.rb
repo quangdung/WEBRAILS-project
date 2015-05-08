@@ -15,6 +15,44 @@ ActiveRecord::Schema.define(version: 20150508091409) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",       limit: 255
+  end
+
+  create_table "animals", force: :cascade do |t|
+    t.string   "nom",             limit: 255
+    t.integer  "status_id",       limit: 4
+    t.float    "prix_journalier", limit: 24
+    t.integer  "ferme_id",        limit: 4
+    t.integer  "espece_id",       limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "especes", force: :cascade do |t|
+    t.string   "nom",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "fermes", force: :cascade do |t|
+    t.string   "nom",        limit: 255
+    t.string   "adresse",    limit: 255
+    t.integer  "gerant_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "dureeJour",         limit: 4
+    t.integer  "animal_id",         limit: 4
+    t.integer  "paysan_id",         limit: 4
+    t.string   "statusLocation_id", limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "status_animals", force: :cascade do |t|
+    t.string   "nom",        limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -45,5 +83,31 @@ ActiveRecord::Schema.define(version: 20150508091409) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "status_locations", force: :cascade do |t|
+    t.string   "nom",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "type_taches", force: :cascade do |t|
+    t.string   "nom",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "type_taches_animals", force: :cascade do |t|
+    t.integer  "type_tache_id", limit: 4
+    t.integer  "animal_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "type_taches_locations", force: :cascade do |t|
+    t.integer  "type_tache_id", limit: 4
+    t.integer  "location_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
 end

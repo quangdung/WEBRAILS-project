@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  status_id: 1
+  prix_journalier: 
+  ferme_id: 1
+  espece_id: 1
+
+two:
+  nom: MyString
+  status_id: 1
+  prix_journalier: 
+  ferme_id: 1
+  espece_id: 1
