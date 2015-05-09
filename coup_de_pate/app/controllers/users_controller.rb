@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :except => :index
 
 
   def edit_roles
@@ -28,11 +31,15 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    # @user = User.find(params[:id])
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+
+    authorize! :read, @user, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /users/new
@@ -85,13 +92,13 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:nom, :prenom, :telephone)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:nom, :prenom, :telephone)
+  end
 end

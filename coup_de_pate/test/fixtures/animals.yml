@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nom: MyString
+  id: 1
+  nom: Vache 1
   status_id: 1
-  prix_journalier: 
+  prix_journalier: 50.50
   ferme_id: 1
   espece_id: 1
 
 two:
-  nom: MyString
+  id: 2
+  nom: Poule 1
   status_id: 1
-  prix_journalier: 
-  ferme_id: 1
-  espece_id: 1
+  prix_journalier: 13.50
+  ferme_id: 2
+  espece_id: 8

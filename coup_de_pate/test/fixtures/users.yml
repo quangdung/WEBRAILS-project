@@ -1,11 +1,31 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  nom: White
-  prenom: John
-  telephone: +41 78 111 22 33
-
-two:
-  nom: Blue
-  prenom: Walter
-  telephone: +41 79 444 55 66
+## Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+#gerant1:
+#  id: 1
+#  nom: White
+#  prenom: John
+#  type: gerant
+#  email: g1@g.com
+#
+#gerant2:
+#  id: 2
+#  nom: Walter
+#  prenom: Smith
+#  type: gerant
+#  email: g2@g.com
+#
+#paysan1:
+#  id: 3
+#  nom: Doe
+#  prenom: Mike
+#  type: paysan
+#  email: p1@p.com
+#
+#paysan2:
+#  id: 4
+#  nom: Dude
+#  prenom: Luke
+#  type: paysan
+#  email: p2@p.com
+#
+#

@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   date: 2015-05-08
   dureeJour: 1
   animal_id: 1
@@ -8,6 +9,7 @@ one:
   statusLocation_id: MyString
 
 two:
+  id: 2
   date: 2015-05-08
   dureeJour: 1
   animal_id: 1

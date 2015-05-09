@@ -7,9 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def has_role?(role)
-    # faire attention à la case
-
-    # return self.roles.find_by(:name => role.to_s.camelize)
+    # faire attention à la case, tous les modifications de case invalide la vérification de rôle
+    # return self.roles.find_by(:name => role.to_s.upcase)
 
     return self.roles.find_by(:name => role.to_s)
   end
