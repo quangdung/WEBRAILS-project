@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :roles
+
+  devise_for :users
+  resources :users do
+    member do
+      put :save_roles
+      get :edit_roles
+    end
+  end
+
   resources :locations
 
   resources :type_taches
@@ -14,6 +24,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
