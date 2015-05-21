@@ -29,7 +29,9 @@
   <strong>Taches possibles :</strong>
   <ul>
     <% @animal.type_tache.each do |tache| %>
-        <li><%= tache.nom %></li>
+        <li>
+          <%= tache.nom %>
+        </li>
     <% end %>
   </ul>
 </p>

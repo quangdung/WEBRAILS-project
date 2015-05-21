@@ -25,6 +25,7 @@
     <th><i>Status</i></th>
     <th><i>Prix journalier</i></th>
     <th><i>Espece</i></th>
+    <th><i>Taches possibles</i></th>
   </tr>
   </thead>
 
@@ -35,6 +36,15 @@
         <td><%= animal.status_animal.nom %></td>
         <td><%= animal.prix_journalier %></td>
         <td><%= animal.espece.nom %></td>
+        <td>
+          <% animal.type_tache.each_with_index do |tache, index| %>
+            <%= if(index == animal.type_tache.size - 1)
+                tache.nom
+            else
+                tache.nom + ", "
+            end %>
+          <% end %>
+        </td>
       </tr>
   <% end %>
   </tbody>

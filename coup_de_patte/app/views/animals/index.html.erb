@@ -10,6 +10,7 @@
       <th>Prix journalier</th>
       <th>Ferme</th>
       <th>Espece</th>
+      <th><i>Taches possibles</i></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,15 @@
         <td><%= animal.prix_journalier %></td>
         <td><%= link_to animal.ferme.nom, animal.ferme %></td>
         <td><%= animal.espece.nom %></td>
+        <td>
+          <% animal.type_tache.each_with_index do |tache, index| %>
+              <%= if(index == animal.type_tache.size - 1)
+                    tache.nom
+                  else
+                    tache.nom + ", "
+                  end %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', animal %></td>
         <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
         <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
