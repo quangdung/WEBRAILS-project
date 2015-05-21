@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509000913) do
+ActiveRecord::Schema.define(version: 20150521101012) do
 
   create_table "animals", force: :cascade do |t|
     t.string   "nom",              limit: 255
@@ -23,12 +23,16 @@ ActiveRecord::Schema.define(version: 20150509000913) do
     t.datetime "updated_at",                   null: false
   end
 
+  add_index "animals", ["espece_id"], name: "fk_animals_especes", using: :btree
+
   create_table "animals_type_taches", force: :cascade do |t|
     t.integer  "type_tache_id", limit: 4
     t.integer  "animal_id",     limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  add_index "animals_type_taches", ["type_tache_id"], name: "fk_animals_type_taches", using: :btree
 
   create_table "especes", force: :cascade do |t|
     t.string   "nom",        limit: 255
@@ -52,6 +56,13 @@ ActiveRecord::Schema.define(version: 20150509000913) do
     t.string   "statusLocation_id", limit: 255
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+  end
+
+  create_table "locations_type_taches", force: :cascade do |t|
+    t.integer  "type_tache_id", limit: 4
+    t.integer  "location_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -83,13 +94,6 @@ ActiveRecord::Schema.define(version: 20150509000913) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "type_taches_locations", force: :cascade do |t|
-    t.integer  "type_tache_id", limit: 4
-    t.integer  "location_id",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "nom",                    limit: 255
     t.string   "prenom",                 limit: 255
@@ -106,9 +110,12 @@ ActiveRecord::Schema.define(version: 20150509000913) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "type",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "animals", "especes", name: "fk_animals_especes"
+  add_foreign_key "animals_type_taches", "type_taches", column: "type_tache_id", name: "fk_animals_type_taches"
 end

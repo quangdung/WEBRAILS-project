@@ -15,16 +15,20 @@ class EspecesController < ApplicationController
   # GET /especes/new
   def new
     @espece = Espece.new
+    authorize! :create, @espece, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /especes/1/edit
   def edit
+    @espece = Espece.find(params[:id])
+    authorize! :update, @espece, :message => "Vous n'avez pas l'autorisation"
   end
 
   # POST /especes
   # POST /especes.json
   def create
     @espece = Espece.new(espece_params)
+    authorize! :create, @espece, :message => "Vous n'avez pas l'autorisation"
 
     respond_to do |format|
       if @espece.save
@@ -40,6 +44,7 @@ class EspecesController < ApplicationController
   # PATCH/PUT /especes/1
   # PATCH/PUT /especes/1.json
   def update
+    authorize! :update, @espece, :message => "Vous n'avez pas l'autorisation"
     respond_to do |format|
       if @espece.update(espece_params)
         format.html { redirect_to @espece, notice: 'Espece was successfully updated.' }
@@ -54,6 +59,7 @@ class EspecesController < ApplicationController
   # DELETE /especes/1
   # DELETE /especes/1.json
   def destroy
+    authorize! :delete, @espece, :message => "Vous n'avez pas l'autorisation"
     @espece.destroy
     respond_to do |format|
       format.html { redirect_to especes_url, notice: 'Espece was successfully destroyed.' }

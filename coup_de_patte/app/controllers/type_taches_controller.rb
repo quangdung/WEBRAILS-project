@@ -15,16 +15,20 @@ class TypeTachesController < ApplicationController
   # GET /type_taches/new
   def new
     @type_tach = TypeTache.new
+    authorize! :create, @type_tach, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /type_taches/1/edit
   def edit
+    @type_tach = TypeTache.find(params[:id])
+    authorize! :update, @espece, :message => "Vous n'avez pas l'autorisation"
   end
 
   # POST /type_taches
   # POST /type_taches.json
   def create
     @type_tach = TypeTache.new(type_tach_params)
+    authorize! :create, @espece, :message => "Vous n'avez pas l'autorisation"
 
     respond_to do |format|
       if @type_tach.save
@@ -40,6 +44,7 @@ class TypeTachesController < ApplicationController
   # PATCH/PUT /type_taches/1
   # PATCH/PUT /type_taches/1.json
   def update
+    authorize! :update, @type_tach, :message => "Vous n'avez pas l'autorisation"
     respond_to do |format|
       if @type_tach.update(type_tach_params)
         format.html { redirect_to @type_tach, notice: 'Type tache was successfully updated.' }
@@ -54,6 +59,7 @@ class TypeTachesController < ApplicationController
   # DELETE /type_taches/1
   # DELETE /type_taches/1.json
   def destroy
+    authorize! :delete, @type_tach, :message => "Vous n'avez pas l'autorisation"
     @type_tach.destroy
     respond_to do |format|
       format.html { redirect_to type_taches_url, notice: 'Type tache was successfully destroyed.' }

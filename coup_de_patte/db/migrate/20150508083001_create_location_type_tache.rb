@@ -1,6 +1,6 @@
-class CreateTypeTacheLocation < ActiveRecord::Migration
+class CreateLocationTypeTache < ActiveRecord::Migration
   def change
-    create_table :type_taches_locations do |t|
+    create_table :locations_type_taches do |t|
       t.integer :type_tache_id
       t.integer :location_id
 

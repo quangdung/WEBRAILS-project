@@ -6,14 +6,25 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
+    if user.has_role?(:admin)
+      can :read, :all
+
+      can :manage, Espece
+      can :manage, TypeTache
+
+      can :voir_roles, User
+    end
+
     if user.has_role?(:gerant)
       can :read, :all
 
-      can :manage, User do |un_user|
-        !un_user.has_role?(:gerant) || un_user.id == user.id
+      #Gerant can manage his own farms
+      can :manage, Ferme do |ferme|
+        ferme.gerant.id == user.id
       end
-
-      can :voir_roles, User
+      can :manage, Animal do |animal|
+        animal.ferme.gerant.id == user.id
+      end
     end
 
     if user.has_role?(:paysan)
