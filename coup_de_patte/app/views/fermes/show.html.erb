@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @ferme.nom %>
+</p>
+
+<p>
+  <strong>Adresse:</strong>
+  <%= @ferme.adresse %>
+</p>
+
+<p>
+  <strong>Gerant:</strong>
+  <%= @ferme.gerant_id %>
+</p>
+
+
+<p><strong>Animaux de la ferme :</strong></p>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th><i>Nom</i></th>
+    <th><i>Status</i></th>
+    <th><i>Prix journalier</i></th>
+    <th><i>Espece</i></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @ferme.animals.each do |animal| %>
+      <tr>
+        <td><%= link_to animal.nom, animal %></td>
+        <td><%= animal.status_animal.nom %></td>
+        <td><%= animal.prix_journalier %></td>
+        <td><%= animal.espece.nom %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_ferme_path(@ferme) %> |
+<%= link_to 'Back', fermes_path %>

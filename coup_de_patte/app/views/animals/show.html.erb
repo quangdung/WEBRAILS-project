@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @animal.nom %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @animal.status_animal.nom %>
+</p>
+
+<p>
+  <strong>Prix journalier:</strong>
+  <%= @animal.prix_journalier %>
+</p>
+
+<p>
+  <strong>Ferme:</strong>
+  <%= link_to @animal.ferme.nom, @animal.ferme %>
+</p>
+
+<p>
+  <strong>Espece:</strong>
+  <%= @animal.espece.nom %>
+</p>
+
+<p>
+  <strong>Taches possibles :</strong>
+  <ul>
+    <% @animal.type_tache.each do |tache| %>
+        <li><%= tache.nom %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animals_path %>

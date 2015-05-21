@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Especes</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @especes.each do |espece| %>
+      <tr>
+        <td><%= espece.nom %></td>
+        <td><%= link_to 'Show', espece %></td>
+        <td><%= link_to 'Edit', edit_espece_path(espece) %></td>
+        <td><%= link_to 'Destroy', espece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Espece', new_espece_path %>
