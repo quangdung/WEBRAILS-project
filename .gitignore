@@ -13,12 +13,12 @@ rerun.txt
 pickle-email-*.html
 
 # database
-/coup_de_pate/config/database.yml
+/coup_de_patte/config/database.yml
 
 # IDE RubyMine
-/coup_de_pate/.idea
-/coup_de_pate/.idea/*
-/coup_de_pate/.idea/*/*
+/coup_de_patte/.idea
+/coup_de_patte/.idea/*
+/coup_de_patte/.idea/*/*
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -41,3 +41,5 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+coup_de_pate/.bundle/config
