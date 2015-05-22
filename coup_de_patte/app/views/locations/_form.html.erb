@@ -1,3 +1,4 @@
+
 <%= form_for(@location) do |f| %>
   <% if @location.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +12,35 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :date %><br>
     <%= f.date_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :dureeJour %><br>
-    <%= f.number_field :dureeJour %>
+
+  <div class="field form-group">
+    <%= f.label 'Durée (jours)' %><br>
+    <%= f.number_field :dureeJour, min: 1 %>
   </div>
-  <div class="field">
-    <%= f.label :animal_id %><br>
-    <%= f.number_field :animal_id %>
+
+  <div class="field form-group">
+    <%= f.label :animal %><br>
+    <!--<%= f.number_field :animal_id %>-->
+    <%= f.collection_select :animal_id, @animals, :id, :nom %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :statusLocation_id %><br>
-    <%= f.text_field :statusLocation_id %>
-  </div>
+
+  <!--<div class="field">-->
+   <!-- <%= f.label :user %><br> -->
+    <!--<%= f.number_field :user_id %>-->
+  <!--</div>-->
+
+  <!--<div class="field">-->
+   <!-- <%= f.label :status_location_id %><br> -->
+    <!--<%= f.text_field :status_location_id %>-->
+  <!--</div>-->
+
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>

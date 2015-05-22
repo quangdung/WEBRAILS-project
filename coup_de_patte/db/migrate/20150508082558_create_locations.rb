@@ -5,7 +5,7 @@ class CreateLocations < ActiveRecord::Migration
       t.integer :dureeJour
       t.integer :animal_id
       t.integer :user_id
-      t.string :statusLocation_id
+      t.string :status_location_id
 
       t.timestamps null: false
     end

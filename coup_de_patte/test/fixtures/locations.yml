@@ -1,17 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+loc1:
   id: 1
   date: 2015-05-08
-  dureeJour: 1
+  dureeJour: 5
   animal_id: 1
-  user_id: 1
-  statusLocation_id: MyString
+  user_id: 3
+  status_location_id: 2
+#  animal: vache1
+#  user: paysan1
+#  status_location: confirme
 
-two:
+loc2:
   id: 2
-  date: 2015-05-08
-  dureeJour: 1
-  animal_id: 1
-  user_id: 1
-  statusLocation_id: MyString
+  date: 2015-05-10
+  dureeJour: 7
+  animal_id: 2
+  user_id: 4
+  status_location_id: 1
+#  animal: poule1
+#  user: paysan2
+#  status_location: attente

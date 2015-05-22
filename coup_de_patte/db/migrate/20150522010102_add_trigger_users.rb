@@ -7,7 +7,7 @@ class AddTriggerUsers < ActiveRecord::Migration
       FOR EACH ROW
         begin
           declare tmp int;
-          select id into tmp from roles where name like lower(NEW.type);
+          select id into tmp from roles where name = NEW.type;
           insert into roles_users values (tmp, NEW.id);
         end
     SQL

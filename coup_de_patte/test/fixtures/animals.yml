@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+vache1:
   id: 1
   nom: Vache 1
   status_animal_id: 1
@@ -9,7 +9,7 @@ one:
   user_id: 1
   espece_id: 1
 
-two:
+poule1:
   id: 2
   nom: Poule 1
   status_animal_id: 1

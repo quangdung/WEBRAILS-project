@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+ferme1:
   id: 1
   nom: "Aux poules heureuses"
   adresse: "Rue de campagne 3, Ependes"
-  user_id: 1
+  user: gerant1
 
-two:
+ferme2:
   id: 2
   nom: "FarmVille"
   adresse: "Rue de Facebook 4, SiliconValley"

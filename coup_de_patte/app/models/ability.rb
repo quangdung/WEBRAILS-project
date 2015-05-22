@@ -22,14 +22,22 @@ class Ability
       can :manage, Ferme do |ferme|
         ferme.user.id == user.id
       end
+
       #Gerant can manage his own animals
       can :manage, Animal do |animal|
         animal.user.id == user.id
+      end
+
+      can :update, Location do |location|
+        location.animal.user.id == user.id
       end
     end
 
     if user.has_role?(:Paysan)
       can :read, :all
+
+      #Paysan peut louer un animal (créer une location)
+      can :create, Location
     end
 
     #   if user.admin?

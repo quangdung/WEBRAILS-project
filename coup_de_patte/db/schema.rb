@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522010101) do
+ActiveRecord::Schema.define(version: 20150522010102) do
 
   create_table "animals", force: :cascade do |t|
     t.string   "nom",              limit: 255
@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20150522010101) do
 
   create_table "locations", force: :cascade do |t|
     t.date     "date"
-    t.integer  "dureeJour",         limit: 4
-    t.integer  "animal_id",         limit: 4
-    t.integer  "user_id",           limit: 4
-    t.string   "statusLocation_id", limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "dureeJour",          limit: 4
+    t.integer  "animal_id",          limit: 4
+    t.integer  "user_id",            limit: 4
+    t.string   "status_location_id", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "locations_type_taches", force: :cascade do |t|

@@ -6,23 +6,23 @@
 </p>
 
 <p>
-  <strong>Dureejour:</strong>
-  <%= @location.dureeJour %>
+  <strong>Durée :</strong>
+  <%= @location.dureeJour %> jour(s)
 </p>
 
 <p>
-  <strong>Animal:</strong>
-  <%= @location.animal_id %>
+  <strong>Animal :</strong>
+  <%= @location.animal.nom %>
 </p>
 
 <p>
-  <strong>Paysan:</strong>
-  <%= @location.paysan_id %>
+  <strong>Paysan :</strong>
+  <%= @location.user.full_name %>
 </p>
 
 <p>
-  <strong>Statuslocation:</strong>
-  <%= @location.statusLocation_id %>
+  <strong>Status de location :</strong>
+  <%= @location.status_location.nom %>
 </p>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |

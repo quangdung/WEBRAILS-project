@@ -15,16 +15,29 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
+    @animals = Animal.all
+    authorize! :create, Location, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /locations/1/edit
   def edit
+    @location = Location.find(params[:id])
+    @animals = Animal.all
+
+    authorize! :update, @location, :message => "Vous n'avez pas l'autorisation"
   end
 
   # POST /locations
   # POST /locations.json
   def create
     @location = Location.new(location_params)
+    @animals = Animal.all
+
+    @location.user_id = current_user.id
+    @location.status_location_id = 1
+
+    authorize! :create, @location, :message => "Vous n'avez pas l'autorisation"
+
 
     respond_to do |format|
       if @location.save
@@ -40,6 +53,8 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    authorize! :update, @location, :message => "Vous n'avez pas l'autorisation"
+
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }

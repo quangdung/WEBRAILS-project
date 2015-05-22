@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
 
     return texte[0...-1] # enlever le dernier charactère
   end
+
+  def full_name
+    "#{prenom} #{nom}"
+  end
 end
