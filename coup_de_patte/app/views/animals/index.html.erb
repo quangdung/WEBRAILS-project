@@ -10,7 +10,7 @@
       <th>Prix journalier</th>
       <th>Ferme</th>
       <th>Espece</th>
-      <th><i>Taches possibles</i></th>
+      <th>Taches possibles</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,8 +33,10 @@
           <% end %>
         </td>
         <td><%= link_to 'Show', animal %></td>
-        <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
-        <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :manage, animal %>
+            <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
+            <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +44,6 @@
 
 <br>
 
-<%= link_to 'New Animal', new_animal_path %>
+<% if can? :manage, Animal %>
+    <%= link_to 'New Animal', new_animal_path %>
+<% end %>

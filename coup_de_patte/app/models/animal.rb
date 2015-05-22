@@ -3,5 +3,6 @@ class Animal < ActiveRecord::Base
   belongs_to :status_animal
   belongs_to :espece
   belongs_to :ferme
+  belongs_to :user
   has_many :locations
 end

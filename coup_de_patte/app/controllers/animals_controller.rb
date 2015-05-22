@@ -15,16 +15,20 @@ class AnimalsController < ApplicationController
   # GET /animals/new
   def new
     @animal = Animal.new
+    authorize! :create, Animal, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /animals/1/edit
   def edit
+    @animal = Animal.find(params[:id])
+    authorize! :update, Animal, :message => "Vous n'avez pas l'autorisation"
   end
 
   # POST /animals
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
+    authorize! :create, @animal, :message => "Vous n'avez pas l'autorisation"
 
     respond_to do |format|
       if @animal.save
@@ -40,6 +44,7 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
   def update
+    authorize! :update, @animal, :message => "Vous n'avez pas l'autorisation"
     respond_to do |format|
       if @animal.update(animal_params)
         format.html { redirect_to @animal, notice: 'Animal was successfully updated.' }
@@ -54,6 +59,7 @@ class AnimalsController < ApplicationController
   # DELETE /animals/1
   # DELETE /animals/1.json
   def destroy
+    authorize! :delete, @animal, :message => "Vous n'avez pas l'autorisation"
     @animal.destroy
     respond_to do |format|
       format.html { redirect_to animals_url, notice: 'Animal was successfully destroyed.' }

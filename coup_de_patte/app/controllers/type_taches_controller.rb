@@ -15,20 +15,20 @@ class TypeTachesController < ApplicationController
   # GET /type_taches/new
   def new
     @type_tach = TypeTache.new
-    authorize! :create, @type_tach, :message => "Vous n'avez pas l'autorisation"
+    authorize! :create, TypeTache, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /type_taches/1/edit
   def edit
     @type_tach = TypeTache.find(params[:id])
-    authorize! :update, @espece, :message => "Vous n'avez pas l'autorisation"
+    authorize! :update, @type_tach, :message => "Vous n'avez pas l'autorisation"
   end
 
   # POST /type_taches
   # POST /type_taches.json
   def create
     @type_tach = TypeTache.new(type_tach_params)
-    authorize! :create, @espece, :message => "Vous n'avez pas l'autorisation"
+    authorize! :create, @type_tach, :message => "Vous n'avez pas l'autorisation"
 
     respond_to do |format|
       if @type_tach.save
@@ -75,6 +75,6 @@ class TypeTachesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def type_tach_params
-      params.require(:type_tach).permit(:nom)
+      params.require(:type_tache).permit(:nom)
     end
 end

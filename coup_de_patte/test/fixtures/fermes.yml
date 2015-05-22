@@ -4,10 +4,10 @@ one:
   id: 1
   nom: "Aux poules heureuses"
   adresse: "Rue de campagne 3, Ependes"
-  gerant_id: 1
+  user_id: 1
 
 two:
   id: 2
   nom: "FarmVille"
   adresse: "Rue de Facebook 4, SiliconValley"
-  gerant_id: 2
+  user_id: 2

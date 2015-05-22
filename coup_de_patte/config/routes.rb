@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   resources :roles
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users do
     member do
       put :save_roles
       get :edit_roles
     end
   end
+
+
 
   resources :locations
 
@@ -23,8 +25,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+<<<<<<< HEAD
   # root 'welcome#index'
-  root 'users#index'
+
+  # root 'users#index'
+  root 'animals#index'
+=======
+  root 'fermes#index'
+>>>>>>> origin/master
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

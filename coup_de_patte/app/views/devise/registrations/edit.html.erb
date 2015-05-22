@@ -4,6 +4,21 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_field :nom, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prénom %><br />
+    <%= f.text_field :prenom, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :téléphone %><br />
+    <%= f.text_field :telephone, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>

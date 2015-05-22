@@ -20,10 +20,11 @@ class Ability
 
       #Gerant can manage his own farms
       can :manage, Ferme do |ferme|
-        ferme.gerant.id == user.id
+        ferme.user.id == user.id
       end
+      #Gerant can manage his own animals
       can :manage, Animal do |animal|
-        animal.ferme.gerant.id == user.id
+        animal.user.id == user.id
       end
     end
 
