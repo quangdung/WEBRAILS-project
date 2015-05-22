@@ -2,12 +2,12 @@
 
 one:
   id: 1
-  name: gerant
+  name: Gerant
 
 two:
   id: 2
-  name: paysan
+  name: Paysan
 
 three:
   id: 3
-  name: admin
+  name: Admin

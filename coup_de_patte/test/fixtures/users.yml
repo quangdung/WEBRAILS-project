@@ -1,36 +1,57 @@
 ## Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#gerant1:
-#  id: 1
-#  nom: White
-#  prenom: John
-#  type: gerant
-#  email: g1@g.com
-#
-#gerant1:
-#  id: 1
-#  nom: White
-#  prenom: John
-#  type: gerant
-#  email: g1@g.com
-#
-#gerant2:
-#  id: 2
-#  nom: Walter
-#  prenom: Smith
-#  type: gerant
-#  email: g2@g.com
-#
-#paysan1:
-#  id: 3
-#  nom: Doe
-#  prenom: Mike
-#  type: paysan
-#  email: p1@p.com
-#
-#paysan2:
-#  id: 4
-#  nom: Dude
-#  prenom: Luke
-#  type: paysan
-#  email: p2@p.com
+
+gerant1:
+  id: 1
+  nom: White
+  prenom: John
+  telephone: 1234
+  type: Gerant
+  email: g1@g.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+
+gerant2:
+  id: 2
+  nom: Walter
+  prenom: Smith
+  telephone: 5678
+  type: Gerant
+  email: g2@g.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+paysan1:
+  id: 3
+  nom: Doe
+  prenom: Mike
+  telephone: 9012
+  type: Paysan
+  email: p1@p.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+paysan2:
+  id: 4
+  nom: Dude
+  prenom: Luke
+  telephone: 3456
+  type: Paysan
+  email: p2@p.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+paysan3:
+  id: 5
+  nom: Dude
+  prenom: Luke
+  telephone: 3456
+  type: Paysan
+  email: p3@p.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+admin1:
+  id: 6
+  nom: Mighty
+  prenom: Bruce
+  telephone: 42
+  type: Admin
+  email: a1@a.com
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
