@@ -15,16 +15,20 @@ class FermesController < ApplicationController
   # GET /fermes/new
   def new
     @ferme = Ferme.new
+    authorize! :create, Ferme, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /fermes/1/edit
   def edit
+    @ferme = Ferme.find(params[:id])
+    authorize! :update, @ferme, :message => "Vous n'avez pas l'autorisation"
   end
 
   # POST /fermes
   # POST /fermes.json
   def create
     @ferme = Ferme.new(ferme_params)
+    authorize! :create, @ferme, :message => "Vous n'avez pas l'autorisation"
 
     respond_to do |format|
       if @ferme.save
@@ -40,6 +44,7 @@ class FermesController < ApplicationController
   # PATCH/PUT /fermes/1
   # PATCH/PUT /fermes/1.json
   def update
+    authorize! :update, @ferme, :message => "Vous n'avez pas l'autorisation"
     respond_to do |format|
       if @ferme.update(ferme_params)
         format.html { redirect_to @ferme, notice: 'Ferme was successfully updated.' }
@@ -54,6 +59,7 @@ class FermesController < ApplicationController
   # DELETE /fermes/1
   # DELETE /fermes/1.json
   def destroy
+    authorize! :delete, @ferme, :message => "Vous n'avez pas l'autorisation"
     @ferme.destroy
     respond_to do |format|
       format.html { redirect_to fermes_url, notice: 'Ferme was successfully destroyed.' }

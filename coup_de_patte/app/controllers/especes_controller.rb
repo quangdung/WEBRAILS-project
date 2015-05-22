@@ -15,7 +15,7 @@ class EspecesController < ApplicationController
   # GET /especes/new
   def new
     @espece = Espece.new
-    authorize! :create, @espece, :message => "Vous n'avez pas l'autorisation"
+    authorize! :create, Espece, :message => "Vous n'avez pas l'autorisation"
   end
 
   # GET /especes/1/edit

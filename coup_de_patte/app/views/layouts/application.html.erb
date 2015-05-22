@@ -14,8 +14,7 @@
     (<%= current_user.roles_as_text %>)
     <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete %>
     <%= link_to 'Modifiez vos données', edit_user_registration_path %>
-  <% elsif request.env['PATH_INFO'] == '/users/sign_in' ||
-      request.env['PATH_INFO'] == '/users/sign_up' %>
+  <% else %>
     <%= link_to 'Connexion', new_user_session_path %> ou
     <%= link_to 'Enregistrez-vous', new_user_registration_path %>
   <% end %>
@@ -26,5 +25,11 @@
 <br />
 <%= link_to 'Animaux', animals_path %>
 <%= link_to 'Fermes', fermes_path %>
+<% if can? :manage, TypeTache %>
+    <%= link_to 'Types de tache', type_taches_path %>
+<% end %>
+<% if can? :manage, Espece %>
+    <%= link_to 'Especes', especes_path %>
+<% end %>
 </body>
 </html>

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150521101012) do
     t.integer  "status_animal_id", limit: 4
     t.float    "prix_journalier",  limit: 24
     t.integer  "ferme_id",         limit: 4
+    t.integer  "user_id",          limit: 4
     t.integer  "espece_id",        limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
@@ -43,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150521101012) do
   create_table "fermes", force: :cascade do |t|
     t.string   "nom",        limit: 255
     t.string   "adresse",    limit: 255
-    t.integer  "gerant_id",  limit: 4
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150521101012) do
     t.date     "date"
     t.integer  "dureeJour",         limit: 4
     t.integer  "animal_id",         limit: 4
-    t.integer  "paysan_id",         limit: 4
+    t.integer  "user_id",           limit: 4
     t.string   "statusLocation_id", limit: 255
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

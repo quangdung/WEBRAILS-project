@@ -12,7 +12,10 @@
 
 <p>
   <strong>Gerant:</strong>
-  <%= @ferme.gerant_id %>
+  <br/>
+  <%= @ferme.user.nom + " " + @ferme.user.prenom %>
+  <br/>
+  <%= @ferme.user.telephone %>
 </p>
 
 
@@ -50,6 +53,7 @@
   </tbody>
 </table>
 
-
-<%= link_to 'Edit', edit_ferme_path(@ferme) %> |
+<% if can? :manage, @ferme %>
+    <%= link_to 'Edit', edit_ferme_path(@ferme) %> |
+<% end %>
 <%= link_to 'Back', fermes_path %>
