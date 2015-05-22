@@ -6,7 +6,7 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
-    if user.has_role?(:admin)
+    if user.has_role?(:Admin)
       can :read, :all
 
       can :manage, Espece
@@ -15,7 +15,7 @@ class Ability
       can :voir_roles, User
     end
 
-    if user.has_role?(:gerant)
+    if user.has_role?(:Gerant)
       can :read, :all
 
       #Gerant can manage his own farms
@@ -28,7 +28,7 @@ class Ability
       end
     end
 
-    if user.has_role?(:paysan)
+    if user.has_role?(:Paysan)
       can :read, :all
     end
 

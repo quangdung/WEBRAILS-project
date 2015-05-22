@@ -17,7 +17,11 @@
 
 <p>
   <strong>Ferme:</strong>
-  <%= link_to @animal.ferme.nom, @animal.ferme %>
+  <% if @animal.ferme.nil? %>
+      pas de ferme
+  <% else %>
+    <%= link_to @animal.ferme.nom, @animal.ferme %>
+  <% end %>
 </p>
 
 <p>

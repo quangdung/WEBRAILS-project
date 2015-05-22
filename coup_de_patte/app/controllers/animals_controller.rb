@@ -16,25 +16,46 @@ class AnimalsController < ApplicationController
   def new
     @animal = Animal.new
     authorize! :create, Animal, :message => "Vous n'avez pas l'autorisation"
+    @especes = Espece.all
+    @status_animals = StatusAnimal.all
+    @fermes = Ferme.where(user_id: current_user.id)
   end
 
   # GET /animals/1/edit
   def edit
     @animal = Animal.find(params[:id])
     authorize! :update, Animal, :message => "Vous n'avez pas l'autorisation"
+    @especes = Espece.all
+    @status_animals = StatusAnimal.all
+    @fermes = Ferme.where(user_id: current_user.id)
   end
 
   # POST /animals
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
+    @animal.user_id = current_user.id
     authorize! :create, @animal, :message => "Vous n'avez pas l'autorisation"
+    if !@animal.ferme.nil?
+      authorize! :manage, @animal.ferme, :message => "Vous n'avez pas l'autorisation"
+    end
+
+    #updating TypeTaches
+    if params[:animal]
+      for id_type_tache in params[:animal][:type_taches]
+        aType = TypeTache.find(id_type_tache)
+        @animal.type_tache << aType
+      end
+    end
 
     respond_to do |format|
       if @animal.save
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
         format.json { render :show, status: :created, location: @animal }
       else
+        @especes = Espece.all
+        @status_animals = StatusAnimal.all
+        @fermes = Ferme.where(user_id: current_user.id)
         format.html { render :new }
         format.json { render json: @animal.errors, status: :unprocessable_entity }
       end
@@ -45,11 +66,29 @@ class AnimalsController < ApplicationController
   # PATCH/PUT /animals/1.json
   def update
     authorize! :update, @animal, :message => "Vous n'avez pas l'autorisation"
+    if !@animal.ferme.nil?
+      authorize! :manage, @animal.ferme, :message => "Vous n'avez pas l'autorisation"
+    end
+
+    #updating TypeTaches
+    @animal.type_tache.each do |aType|
+      @animal.type_tache.delete(aType)
+    end
+    if params[:animal]
+      for id_type_tache in params[:animal][:type_taches]
+        aType = TypeTache.find(id_type_tache)
+        @animal.type_tache << aType
+      end
+    end
+
     respond_to do |format|
       if @animal.update(animal_params)
         format.html { redirect_to @animal, notice: 'Animal was successfully updated.' }
         format.json { render :show, status: :ok, location: @animal }
       else
+        @especes = Espece.all
+        @status_animals = StatusAnimal.all
+        @fermes = Ferme.where(user_id: current_user.id)
         format.html { render :edit }
         format.json { render json: @animal.errors, status: :unprocessable_entity }
       end
@@ -75,6 +114,6 @@ class AnimalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:nom, :status_id, :prix_journalier, :ferme_id, :espece_id)
+      params.require(:animal).permit(:nom, :status_animal_id, :prix_journalier, :ferme_id, :espece_id)
     end
 end

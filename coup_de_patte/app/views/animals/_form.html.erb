@@ -15,22 +15,29 @@
     <%= f.label :nom %><br>
     <%= f.text_field :nom %>
   </div>
-  <div class="field">
-    <%= f.label :status_id %><br>
-    <%= f.number_field :status_animal_id %>
-  </div>
+    <div class="field">
+      <%= f.label :status %><br>
+      <%= f.collection_select :status_animal_id, @status_animals, :id, :nom %>
+    </div>
   <div class="field">
     <%= f.label :prix_journalier %><br>
     <%= f.text_field :prix_journalier %>
   </div>
-  <div class="field">
-    <%= f.label :ferme_id %><br>
-    <%= f.number_field :ferme_id %>
-  </div>
-  <div class="field">
-    <%= f.label :espece_id %><br>
-    <%= f.number_field :espece_id %>
-  </div>
+    <div class="field">
+      <%= f.label :ferme %><br>
+      <%= f.collection_select :ferme_id, @fermes, :id, :nom, {:include_blank => 'Selectionner'} %>
+    </div>
+    <div class="field">
+      <%= f.label :espece %><br>
+      <%= f.collection_select :espece_id, @especes, :id, :nom %>
+    </div>
+    <%= f.label "Types de taches possible" %><br>
+    <% for typeTache in TypeTache.all %>
+        <div>
+          <%= check_box_tag "animal[type_taches][]", typeTache.id, @animal.type_tache.include?(typeTache) %>
+          <%= typeTache.nom %>
+        </div>
+    <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

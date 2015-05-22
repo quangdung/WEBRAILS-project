@@ -21,7 +21,11 @@
         <td><%= animal.nom %></td>
         <td><%= animal.status_animal.nom %></td>
         <td><%= animal.prix_journalier %></td>
-        <td><%= link_to animal.ferme.nom, animal.ferme %></td>
+        <% if animal.ferme.nil? %>
+            <td>pas de ferme</td>
+        <% else %>
+            <td><%= link_to animal.ferme.nom, animal.ferme %></td>
+        <% end %>
         <td><%= animal.espece.nom %></td>
         <td>
           <% animal.type_tache.each_with_index do |tache, index| %>
