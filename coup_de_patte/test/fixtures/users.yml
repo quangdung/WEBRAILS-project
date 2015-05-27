@@ -38,17 +38,8 @@ paysan2:
   email: p2@p.com
   encrypted_password: <%= Devise.bcrypt(User, 'password') %>
 
-paysan3:
-  id: 5
-  nom: Dude
-  prenom: Luke
-  telephone: 3456
-  type: Paysan
-  email: p3@p.com
-  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
-
 admin1:
-  id: 6
+  id: 5
   nom: Mighty
   prenom: Bruce
   telephone: 42

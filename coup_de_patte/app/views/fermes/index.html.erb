@@ -17,7 +17,7 @@
       <tr>
         <td><%= ferme.nom %></td>
         <td><%= ferme.adresse %></td>
-        <td><%= ferme.user.nom + " " + ferme.user.prenom%></td>
+        <td><%= ferme.user.nom + " " + ferme.user.prenom %></td>
         <td><%= link_to 'Show', ferme %></td>
         <% if can? :manage, ferme %>
             <td><%= link_to 'Edit', edit_ferme_path(ferme) %></td>

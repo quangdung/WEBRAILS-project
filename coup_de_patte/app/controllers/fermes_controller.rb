@@ -10,6 +10,11 @@ class FermesController < ApplicationController
   # GET /fermes/1
   # GET /fermes/1.json
   def show
+    @animal = Animal.new
+    @animal.ferme_id = params[:id]
+    @especes = Espece.all
+    @status_animals = StatusAnimal.all
+    @fermes = Ferme.where(user_id: current_user.id)
   end
 
   # GET /fermes/new

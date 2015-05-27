@@ -1,0 +1,1 @@
+$('#animals').append("<%= escape_javascript(render :partial => 'animal', :locals => {:animal => @animal, :printFarm => false}) %>")

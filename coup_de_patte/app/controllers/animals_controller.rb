@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  before_action :set_animal, only: [:show, :edit, :update, :destroy, :remove_from_farm]
 
   # GET /animals
   # GET /animals.json
@@ -19,6 +19,7 @@ class AnimalsController < ApplicationController
     @especes = Espece.all
     @status_animals = StatusAnimal.all
     @fermes = Ferme.where(user_id: current_user.id)
+    #render :partial => "animals/form", :locals => {:isRemote => true}
   end
 
   # GET /animals/1/edit
@@ -41,7 +42,7 @@ class AnimalsController < ApplicationController
     end
 
     #updating TypeTaches
-    if params[:animal]
+    if params[:animal][:type_taches]
       for id_type_tache in params[:animal][:type_taches]
         aType = TypeTache.find(id_type_tache)
         @animal.type_tache << aType
@@ -52,6 +53,7 @@ class AnimalsController < ApplicationController
       if @animal.save
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
         format.json { render :show, status: :created, location: @animal }
+        format.js { render 'fermes/ajoutAnimal' }
       else
         @especes = Espece.all
         @status_animals = StatusAnimal.all
@@ -93,6 +95,13 @@ class AnimalsController < ApplicationController
         format.json { render json: @animal.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PUT animals/1/remove_from_farm
+  def remove_from_farm
+    authorize! :update, @animal, :message => "Vous n'avez pas l'autorisation"
+    @animal.update(ferme_id: nil)
+    format.js { render :nothing => true }
   end
 
   # DELETE /animals/1

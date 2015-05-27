@@ -4,7 +4,7 @@ ferme1:
   id: 1
   nom: "Aux poules heureuses"
   adresse: "Rue de campagne 3, Ependes"
-  user: gerant1
+  user: 1
 
 ferme2:
   id: 2

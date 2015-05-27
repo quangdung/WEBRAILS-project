@@ -1,4 +1,5 @@
-<%= form_for(@animal) do |f| %>
+<!-- we didn't manage to pass variable isRemote with false when render :new is called, so in that case the variable is not defined and the form is not remote -->
+<%= form_for(@animal, :remote => (if (defined? isRemote) == "local-variable" then isRemote else false end)) do |f| %>
   <% if @animal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
@@ -25,7 +26,12 @@
   </div>
     <div class="field">
       <%= f.label :ferme %><br>
-      <%= f.collection_select :ferme_id, @fermes, :id, :nom, {:include_blank => 'Selectionner'} %>
+      <% if (defined? fixedFarm) == "local-variable" then %>
+          <%= @animal.ferme.nom %>
+          <%= f.hidden_field :ferme_id %>
+      <% else %>
+          <%= f.collection_select :ferme_id, @fermes, :id, :nom, {:include_blank => 'Selectionner'} %>
+      <% end %>
     </div>
     <div class="field">
       <%= f.label :espece %><br>

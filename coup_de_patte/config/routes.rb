@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
   resources :type_taches
 
-  resources :animals
+  resources :animals do
+    member do
+      put :remove_from_farm
+    end
+  end
 
   resources :fermes
 

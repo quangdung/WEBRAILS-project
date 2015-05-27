@@ -29,31 +29,23 @@
     <th><i>Prix journalier</i></th>
     <th><i>Espece</i></th>
     <th><i>Taches possibles</i></th>
+    <th colspan="4"></th>
   </tr>
   </thead>
 
-  <tbody>
+  <tbody id="animals">
   <% @ferme.animals.each do |animal| %>
-      <tr>
-        <td><%= link_to animal.nom, animal %></td>
-        <td><%= animal.status_animal.nom %></td>
-        <td><%= animal.prix_journalier %></td>
-        <td><%= animal.espece.nom %></td>
-        <td>
-          <% animal.type_tache.each_with_index do |tache, index| %>
-            <%= if(index == animal.type_tache.size - 1)
-                tache.nom
-            else
-                tache.nom + ", "
-            end %>
-          <% end %>
-        </td>
-      </tr>
+      <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => false} %>
   <% end %>
   </tbody>
 </table>
 
 <% if can? :manage, @ferme %>
+    <br/>
+    <div style="border: 2px solid;">
+        <p><strong>Ajouter un animal</strong></p>
+        <%= render :partial => "animals/form", :locals => {:isRemote => true, :fixedFarm => true} %>
+    </div>
     <%= link_to 'Edit', edit_ferme_path(@ferme) %> |
 <% end %>
 <%= link_to 'Back', fermes_path %>
