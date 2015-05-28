@@ -76,7 +76,7 @@ class AnimalsController < ApplicationController
     @animal.type_tache.each do |aType|
       @animal.type_tache.delete(aType)
     end
-    if params[:animal]
+    if params[:animal][:type_taches]
       for id_type_tache in params[:animal][:type_taches]
         aType = TypeTache.find(id_type_tache)
         @animal.type_tache << aType

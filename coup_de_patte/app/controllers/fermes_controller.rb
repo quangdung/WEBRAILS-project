@@ -51,6 +51,7 @@ class FermesController < ApplicationController
         format.html { redirect_to @ferme, notice: 'Ferme was successfully created.' }
         format.json { render :show, status: :created, location: @ferme }
       else
+        @animals = Animal.where(user_id: current_user.id)
         format.html { render :new }
         format.json { render json: @ferme.errors, status: :unprocessable_entity }
       end
@@ -78,6 +79,7 @@ class FermesController < ApplicationController
         format.html { redirect_to @ferme, notice: 'Ferme was successfully updated.' }
         format.json { render :show, status: :ok, location: @ferme }
       else
+        @animals = Animal.where(user_id: current_user.id)
         format.html { render :edit }
         format.json { render json: @ferme.errors, status: :unprocessable_entity }
       end
