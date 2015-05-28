@@ -1,25 +1,48 @@
 <%= form_for(@ferme) do |f| %>
-  <% if @ferme.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ferme.errors.count, "error") %> prohibited this ferme from being saved:</h2>
+    <% if @ferme.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@ferme.errors.count, "error") %> prohibited this ferme from being saved:</h2>
 
-      <ul>
-      <% @ferme.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @ferme.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :nom %><br>
+      <%= f.text_field :nom %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.label :adresse %><br>
+      <%= f.text_field :adresse %>
+    </div>
+    <%= f.label "Animaux" %><br>
+    <table border="1">
+      <thead>
+      <tr>
+        <th><i>Nom</i></th>
+        <th><i>Status</i></th>
+        <th><i>Prix journalier</i></th>
+        <th><i>Espece</i></th>
+        <th><i>Taches possibles</i></th>
+        <th colspan="3"></th>
+        <th><i>Dans cette ferme</i></th>
+      </tr>
+      </thead>
 
-  <div class="field">
-    <%= f.label :nom %><br>
-    <%= f.text_field :nom %>
-  </div>
-  <div class="field">
-    <%= f.label :adresse %><br>
-    <%= f.text_field :adresse %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <tbody id="animals">
+      <% for animal in @animals %>
+          <tr>
+            <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => false} %>
+            <td><%= check_box_tag "ferme[animals][]", animal.id, @ferme.animals.include?(animal) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

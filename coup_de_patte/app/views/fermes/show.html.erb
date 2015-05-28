@@ -35,7 +35,10 @@
 
   <tbody id="animals">
   <% @ferme.animals.each do |animal| %>
+    <tr>
       <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => false} %>
+      <td><%= link_to 'Remove from farm', remove_from_farm_animal_path(animal), :class => "removeFromFarm", method: :put, :data => { :remote => true } %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>

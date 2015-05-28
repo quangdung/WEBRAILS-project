@@ -1,4 +1,3 @@
-<tr>
   <td><%= animal.nom %></td>
   <td><%= animal.status_animal.nom %></td>
   <td><%= animal.prix_journalier %></td>
@@ -23,8 +22,4 @@
   <% if can? :manage, animal %>
       <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
       <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% if !printFarm %>
-          <td><%= link_to 'Remove from farm', remove_from_farm_animal_path(animal), :class => "removeFromFarm", method: :put, :data => { :remote => true } %></td>
-      <% end %>
   <% end %>
-</tr>

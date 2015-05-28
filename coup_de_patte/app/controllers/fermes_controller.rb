@@ -21,19 +21,30 @@ class FermesController < ApplicationController
   def new
     @ferme = Ferme.new
     authorize! :create, Ferme, :message => "Vous n'avez pas l'autorisation"
+    @animals = Animal.where(user_id: current_user.id)
   end
 
   # GET /fermes/1/edit
   def edit
     @ferme = Ferme.find(params[:id])
     authorize! :update, @ferme, :message => "Vous n'avez pas l'autorisation"
+    @animals = Animal.where(user_id: current_user.id)
   end
 
   # POST /fermes
   # POST /fermes.json
   def create
     @ferme = Ferme.new(ferme_params)
+    @ferme.user_id = current_user.id
     authorize! :create, @ferme, :message => "Vous n'avez pas l'autorisation"
+
+    #updating Animals
+    if params[:ferme][:animals]
+      for id_animal in params[:ferme][:animals]
+        aAnimal = Animal.find(id_animal)
+        @ferme.animals << aAnimal
+      end
+    end
 
     respond_to do |format|
       if @ferme.save
@@ -50,6 +61,18 @@ class FermesController < ApplicationController
   # PATCH/PUT /fermes/1.json
   def update
     authorize! :update, @ferme, :message => "Vous n'avez pas l'autorisation"
+
+    #updating Animals
+    @ferme.animals.each do |aAnimal|
+      @ferme.animals.delete(aAnimal)
+    end
+    if params[:ferme][:animals]
+      for id_animal in params[:ferme][:animals]
+        aAnimal = Animal.find(id_animal)
+        @ferme.animals << aAnimal
+      end
+    end
+
     respond_to do |format|
       if @ferme.update(ferme_params)
         format.html { redirect_to @ferme, notice: 'Ferme was successfully updated.' }
