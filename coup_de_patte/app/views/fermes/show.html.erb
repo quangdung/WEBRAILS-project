@@ -21,7 +21,7 @@
 
 <p><strong>Animaux de la ferme :</strong></p>
 
-<table border="1">
+<table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
   <tr>
     <th><i>Nom</i></th>
@@ -29,15 +29,14 @@
     <th><i>Prix journalier</i></th>
     <th><i>Espece</i></th>
     <th><i>Taches possibles</i></th>
-    <th colspan="4"></th>
+    <th></th>
   </tr>
   </thead>
 
   <tbody id="animals">
   <% @ferme.animals.each do |animal| %>
     <tr>
-      <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => false} %>
-      <td><%= link_to 'Remove from farm', remove_from_farm_animal_path(animal), :class => "removeFromFarm", method: :put, :data => { :remote => true } %></td>
+      <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => false, :printRemoveFarm => true} %>
     </tr>
   <% end %>
   </tbody>

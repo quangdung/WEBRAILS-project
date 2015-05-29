@@ -10,7 +10,7 @@
       <th>Animal</th>
       <th>Paysan</th>
       <th>Status de location</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -23,7 +23,7 @@
         <td><%= location.user.full_name %></td>
         <td><%= location.status_location.nom %></td>
         <td>
-          <%= link_to 'Show', location, :class => 'btn btn-sm btn-info' %>
+          <%= link_to 'Show', location, :class => 'btn btn-sm btn-default' %>
           <%= link_to 'Edit', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
           <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </td>

@@ -2,13 +2,13 @@
 
 <h1>Listing Fermes</h1>
 
-<table border="1">
+<table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
     <tr>
       <th>Nom</th>
       <th>Adresse</th>
       <th>Gerant</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,11 +18,13 @@
         <td><%= ferme.nom %></td>
         <td><%= ferme.adresse %></td>
         <td><%= ferme.user.nom + " " + ferme.user.prenom %></td>
-        <td><%= link_to 'Show', ferme %></td>
-        <% if can? :manage, ferme %>
-            <td><%= link_to 'Edit', edit_ferme_path(ferme) %></td>
-            <td><%= link_to 'Destroy', ferme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td>
+          <%= link_to 'Show', ferme, :class => 'btn btn-sm btn-default' %>
+          <% if can? :manage, ferme %>
+            <%= link_to 'Edit', edit_ferme_path(ferme), :class => 'btn btn-sm btn-default' %>
+            <%= link_to 'Destroy', ferme, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
