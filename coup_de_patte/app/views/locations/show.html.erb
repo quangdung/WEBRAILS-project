@@ -25,5 +25,16 @@
   <%= @location.status_location.nom %>
 </p>
 
+<p>
+  <strong>Tâches possibles :</strong>
+<ul>
+  <% @location.type_tache.each do |tache| %>
+    <li>
+      <%= tache.nom %>
+    </li>
+  <% end %>
+</ul>
+</p>
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

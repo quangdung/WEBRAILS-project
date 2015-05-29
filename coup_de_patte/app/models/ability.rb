@@ -28,6 +28,7 @@ class Ability
         animal.user.id == user.id
       end
 
+
       can :update, Location do |location|
         location.animal.user.id == user.id
       end

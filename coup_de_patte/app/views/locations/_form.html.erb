@@ -24,21 +24,62 @@
 
   <div class="field form-group">
     <%= f.label :animal %><br>
-    <!--<%= f.number_field :animal_id %>-->
     <%= f.collection_select :animal_id, @animals, :id, :nom %>
   </div>
 
-  <!--<div class="field">-->
-   <!-- <%= f.label :user %><br> -->
-    <!--<%= f.number_field :user_id %>-->
-  <!--</div>-->
+  <!-- Vue Edit -->
+  <% if !@location.new_record? %>
+    <div class="field form-group">
+      <%= f.label :paysan %><br>
+      <%= @location.user.full_name %>
+    </div>
 
-  <!--<div class="field">-->
-   <!-- <%= f.label :status_location_id %><br> -->
-    <!--<%= f.text_field :status_location_id %>-->
-  <!--</div>-->
 
-  <br>
+    <div class="field form-group">
+      <%= f.label 'Status de location' %> <br>
+      <%= f.collection_select :status_location_id, @statusLocation, :id, :nom  %>
+    </div>
+
+
+
+    <div class="field form-group">
+      <%= f.label 'Types de tâches possibles' %><br>
+      <% for typeTache in @location.animal.type_tache.all %>
+        <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
+        <%= typeTache.nom %>
+        <br>
+      <% end %>
+    </div>
+
+
+  <!-- Vue New -->
+  <% else %>
+
+    <div class="field form-group">
+      <%= f.label :paysan %><br>
+      <%= current_user.full_name %>
+    </div>
+
+
+    <div class="field form-group">
+      <%= f.label 'Status de location' %> <br>
+      <%= @statusLocation.first.nom  %>
+    </div>
+
+
+
+    <div class="field form-group">
+      <%= f.label 'Types de tâches possibles' %><br>
+      <% for typeTache in @animals.first.type_tache %>
+        <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
+        <%= typeTache.nom %>
+        <br>
+      <% end %>
+    </div>
+
+
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -14,15 +14,19 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
+    authorize! :create, Location, :message => "Vous n'avez pas l'autorisation"
+
     @location = Location.new
     @animals = Animal.all
-    authorize! :create, Location, :message => "Vous n'avez pas l'autorisation"
+    @statusLocation = StatusLocation.all
+    # @user = User.find(params[:user_id])
   end
 
   # GET /locations/1/edit
   def edit
     @location = Location.find(params[:id])
     @animals = Animal.all
+    @statusLocation = StatusLocation.all
 
     authorize! :update, @location, :message => "Vous n'avez pas l'autorisation"
   end
@@ -33,10 +37,18 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     @animals = Animal.all
 
-    @location.user_id = current_user.id
+    @location.user_id = :user_id
     @location.status_location_id = 1
 
     authorize! :create, @location, :message => "Vous n'avez pas l'autorisation"
+
+    #updating TypeTaches
+    if params[:location][:type_taches]
+      for id_type_tache in params[:location][:type_taches]
+        aType = TypeTache.find(id_type_tache)
+        @location.type_tache << aType
+      end
+    end
 
 
     respond_to do |format|
@@ -55,6 +67,19 @@ class LocationsController < ApplicationController
   def update
     authorize! :update, @location, :message => "Vous n'avez pas l'autorisation"
 
+    # updating TypeTaches
+    @location.type_tache.each do |aType|
+      @location.type_tache.delete(aType)
+    end
+
+    if params[:location][:type_taches]
+      for id_type_tache in params[:location][:type_taches]
+        aType = TypeTache.find(id_type_tache)
+        @location.type_tache << aType
+      end
+    end
+    # end updating TypeTaches
+
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
@@ -69,6 +94,8 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
+    authorize! :delete, @location, :message => "Vous n'avez pas l'autorisation"
+
     @location.destroy
     respond_to do |format|
       format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
@@ -84,6 +111,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:date, :dureeJour, :animal_id, :user_id, :statusLocation_id)
+      params.require(:location).permit(:date, :dureeJour, :animal_id, :user_id, :status_location_id)
     end
 end

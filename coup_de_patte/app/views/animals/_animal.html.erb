@@ -9,6 +9,7 @@
       <% end %>
   <% end %>
   <td><%= animal.espece.nom %></td>
+
   <td>
     <% animal.type_tache.each_with_index do |tache, index| %>
         <%= if(index == animal.type_tache.size - 1)
@@ -18,6 +19,7 @@
             end %>
     <% end %>
   </td>
+
   <td><%= link_to 'Show', animal %></td>
   <% if can? :manage, animal %>
       <td><%= link_to 'Edit', edit_animal_path(animal) %></td>

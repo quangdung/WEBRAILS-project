@@ -37,6 +37,7 @@
       <%= f.label :espece %><br>
       <%= f.collection_select :espece_id, @especes, :id, :nom %>
     </div>
+
     <%= f.label "Types de taches possible" %><br>
     <% for typeTache in TypeTache.all %>
         <div>

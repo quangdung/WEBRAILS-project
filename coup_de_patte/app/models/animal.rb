@@ -5,6 +5,7 @@ class Animal < ActiveRecord::Base
   belongs_to :ferme
   belongs_to :user
   has_many :locations
+
   validates_presence_of :nom
   validates_presence_of :status_animal
   validates_presence_of :prix_journalier

@@ -23,13 +23,31 @@
 <%= yield %>
 
 <br />
+
+<!-- Vue Public -->
 <%= link_to 'Animaux', animals_path %>
 <%= link_to 'Fermes', fermes_path %>
+
+<!-- Vue Paysan -->
+<% if can? :create, Location %>
+  <%= link_to 'Louer un animal', new_location_path({:user_id => current_user.id}) %>
+<% end %>
+
+<!-- Vue Gérant -->
+<% if can? :update, Location %>
+  <%= link_to 'Gérer les locations', locations_path %>
+<% end %>
+
+<!-- Vue admin -->
 <% if can? :manage, TypeTache %>
     <%= link_to 'Types de tache', type_taches_path %>
 <% end %>
+
 <% if can? :manage, Espece %>
     <%= link_to 'Especes', especes_path %>
 <% end %>
+
+
+
 </body>
 </html>
