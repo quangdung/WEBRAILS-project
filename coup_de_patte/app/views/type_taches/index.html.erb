@@ -2,11 +2,11 @@
 
 <h1>Listing Type Taches</h1>
 
-<table border="1">
+<table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
     <tr>
       <th>Nom</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,9 +14,11 @@
     <% @type_taches.each do |type_tach| %>
       <tr>
         <td><%= type_tach.nom %></td>
-        <td><%= link_to 'Show', type_tach %></td>
-        <td><%= link_to 'Edit', edit_type_tach_path(type_tach) %></td>
-        <td><%= link_to 'Destroy', type_tach, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', type_tach %>
+          <%= link_to 'Edit', edit_type_tach_path(type_tach) %>
+          <%= link_to 'Destroy', type_tach, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

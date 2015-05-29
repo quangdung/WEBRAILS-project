@@ -2,7 +2,7 @@
 
 <h1>Listing Users</h1>
 
-<table>
+<table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
   <tr>
     <th>Nom</th>
@@ -42,7 +42,7 @@
       <!--<% if can? :manage, user %>-->
         <td><%= link_to 'Edit Rôles', edit_roles_user_path(user) %></td>
 
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %></td>
       <!--<% end %>-->
 
     </tr>

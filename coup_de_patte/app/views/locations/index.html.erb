@@ -12,6 +12,7 @@
       <th>Status de location</th>
       <th>Type de tâche</th>
       <!--<th colspan="2"></th>-->
+      <th></th>
     </tr>
   </thead>
 
@@ -35,11 +36,15 @@
         </td>
 
         <td>
-          <%= link_to 'Show', location, :class => 'btn btn-sm btn-info' %>
+          <%= link_to 'Show', location, :class => 'btn btn-sm btn-default' %>
 
           <% if can? :update, location %>
             <%= link_to 'Edit', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
           <% end %>
+
+
+          <%= link_to 'Edit', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
+          <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </td>
       </tr>
     <% end %>
