@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFFFFF  repeat-x left top;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #66665E;
+}
+
+
+.page {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.content {
+  float: right;
+  width: 700px;
+  padding-top: 20px;
+  padding-right: 40px;
+}
+
+.actions_specifiques, .actions_generales {
+  float: left;
+  width: 200px;
+  font-size: 0.8em;
+  padding-top: 20px;
+  padding-left: 0px;
+}
+
+
+/* Boîtes de notification */
+
+.info_box, .notice_box, .error_box {
+    border: 1px solid;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0px 0px 20px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    font-size: 11px;
+}
+.info_box {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('info.png');
+}
+.notice_box {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('notice.png');
+}
+.error_box {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('error.png');
+}
+
+/* Pour le reste.... */
+
+.left{
+  float : left;
+}
+
+.right{
+  float : right;
+}
+
+.clear {
+  clear: both;
+}
+
+tr, td {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: left;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  line-height : 25px;
+  text-transform: uppercase;
+  font-family: "Trebuchet MS", Georgia, "Times New Roman", Times, serif;
+  font-weight: normal;
+  color: #999999;
+}
+
+input[type=text], input[type=password], textarea{
+  border : 1px solid #888888;
+  background-color : #f1f1f1;
+  padding : 2px;
+}
+
+h1 { font-size: 25px; margin-bottom : 10px;}
+
+h2 { 
+  font-size: 14px;}
+
+h3 { }
+
+p, ul, ol {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+blockquote { }
+
+a { color: #41ACE7; }
+
+a:hover { background-color: #DDD; }
+
+a:visited { color: #41ACE7; }
+
+input { font-size: 11px; }
+
+input.menu, a.menu {
+   font-size:11px;
+   color:black;
+   height:15px;
+   margin-bottom:5px;
+   background-color:white;
+   border-top-style:none;
+   border-bottom-style:solid;
+   border-bottom-color:#41ACE7;
+   border-bottom-width:1px;
+   border-left-style:solid;
+   border-left-color:#41ACE7;
+   border-left-width:5px;
+   border-right-style:none;
+}
+
+select { font-size: 11px; }
+
+textarea { font-size: 11px }
+
+a img {
+  border: none;
+}
+
+img.left {
+  float: left;
+  margin: 7px 30px 0 0;
+}
+
+img.right {
+  float: right;
+  margin: 7px 0 0 30px;
+}
+
+hr { display: none; }
+
+
+
+

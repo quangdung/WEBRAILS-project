@@ -14,7 +14,7 @@ class FermesController < ApplicationController
     @animal.ferme_id = params[:id]
     @especes = Espece.all
     @status_animals = StatusAnimal.all
-    if(user_signed_in)
+    if(user_signed_in?)
       @fermes = Ferme.where(user_id: current_user.id)
     end
   end

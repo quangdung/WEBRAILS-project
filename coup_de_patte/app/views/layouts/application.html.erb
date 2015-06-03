@@ -3,51 +3,80 @@
 <head>
   <title>CoupDePatte</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "_monstyle" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Vous êtes connecté en tant que <%= current_user.email %>
-    (<%= current_user.roles_as_text %>)
-    <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete %>
-    <%= link_to 'Modifiez vos données', edit_user_registration_path %>
-  <% else %>
-    <%= link_to 'Connexion', new_user_session_path %> ou
-    <%= link_to 'Enregistrez-vous', new_user_registration_path %>
-  <% end %>
+<div class="page">
+  <h1><%= "Coup de patte" %></h1>
+  <div class="content">
+    <% if flash[:notice] %>
+        <div class="notice_box">
+          <%= flash[:notice] %>
+        </div>
+    <% end %>
+    <% if flash[:error] %>
+        <div class="error_box">
+          <%= flash[:error] %>
+        </div>
+    <% end %>
+    <%= yield %>
+  </div>
+
+  <div class="actions_specifiques">
+    <%= yield :actions_specifiques %>
+  </div>
+
+  <div class="actions_generales">
+    <h2>Actions générales</h2>
+    <!-- Vue Public -->
+    <%= link_to 'Liste des animaux', animals_path %>
+    <br/>
+    <%= link_to 'Liste des Fermes', fermes_path %>
+
+    <!-- Vue Paysan -->
+    <% if can? :create, Location %>
+        <%= link_to 'Louer un animal', new_location_path({:user_id => current_user.id}) %>
+        <br/>
+    <% end %>
+
+    <!-- Vue Gérant -->
+    <% if can? :update, Location %>
+        <br/>
+        <%= link_to 'Gérer les locations', locations_path %>
+    <% end %>
+
+    <!-- Vue admin -->
+    <% if can? :manage, TypeTache %>
+        <%= link_to 'Types de tache', type_taches_path %>
+        <br/>
+    <% end %>
+
+    <% if can? :manage, Espece %>
+        <%= link_to 'Especes', especes_path %>
+    <% end %>
+
+    <br/>
+    <br/>
+    <div id="user_nav">
+      <% if user_signed_in? %>
+          Connecté en tant que <%= current_user.email %>
+          (<%= current_user.roles_as_text %>)
+          <br />
+          <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete %>
+          <br />
+          <%= link_to 'Modifiez vos données', edit_user_registration_path %>
+      <% else %>
+          <%= link_to 'Connexion', new_user_session_path %>
+          <br />
+          <%= link_to 'S\'enregistrer', new_user_registration_path %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
-
-<%= yield %>
-
-<br />
-
-<!-- Vue Public -->
-<%= link_to 'Animaux', animals_path %>
-<%= link_to 'Fermes', fermes_path %>
-
-<!-- Vue Paysan -->
-<% if can? :create, Location %>
-  <%= link_to 'Louer un animal', new_location_path({:user_id => current_user.id}) %>
-<% end %>
-
-<!-- Vue Gérant -->
-<% if can? :update, Location %>
-  <%= link_to 'Gérer les locations', locations_path %>
-<% end %>
-
-<!-- Vue admin -->
-<% if can? :manage, TypeTache %>
-    <%= link_to 'Types de tache', type_taches_path %>
-<% end %>
-
-<% if can? :manage, Espece %>
-    <%= link_to 'Especes', especes_path %>
-<% end %>
-
-
 
 </body>
 </html>
