@@ -14,7 +14,9 @@ class FermesController < ApplicationController
     @animal.ferme_id = params[:id]
     @especes = Espece.all
     @status_animals = StatusAnimal.all
-    @fermes = Ferme.where(user_id: current_user.id)
+    if(user_signed_in)
+      @fermes = Ferme.where(user_id: current_user.id)
+    end
   end
 
   # GET /fermes/new
@@ -35,8 +37,8 @@ class FermesController < ApplicationController
   # POST /fermes.json
   def create
     @ferme = Ferme.new(ferme_params)
-    @ferme.user_id = current_user.id
     authorize! :create, @ferme, :message => "Vous n'avez pas l'autorisation"
+	@ferme.user_id = current_user.id
 
     #updating Animals
     if params[:ferme][:animals]
