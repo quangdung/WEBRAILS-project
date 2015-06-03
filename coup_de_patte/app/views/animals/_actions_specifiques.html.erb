@@ -1,0 +1,25 @@
+<h2>Actions spécifiques</h2>
+<% if action.eql?("index") %>
+    <% if can? :manage, Animal %>
+        <%= link_to 'Nouveau animal', new_animal_path %>
+    <% end %>
+<% end %>
+<% if action.eql?("new") %>
+    <%= link_to 'Retour', animals_path %>
+<%end%>
+<% if action.eql?("edit") %>
+    <%= link_to 'Afficher', animal_path(@animal) %>
+    <br />
+    <% if can? :manage, Animal %>
+        <%= link_to 'Nouveau animal', new_animal_path %>
+    <% end %>
+<%end%>
+<% if action.eql?("show") %>
+    <% if can? :manage, @animal %>
+        <%= link_to 'Mettre à jour', edit_animal_path(@animal) %>
+        <br />
+    <% end %>
+    <% if can? :manage, Animal %>
+        <%= link_to 'Nouveau animal', new_animal_path %>
+    <% end %>
+<%end%>

@@ -1,4 +1,10 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "show" } %>
+<% end %>
 <!--<p id="notice"><%= notice %></p>-->
+
+<h1>Ferme</h1>
 
 <p>
   <strong>Nom:</strong>
@@ -24,11 +30,11 @@
 <table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
   <tr>
-    <th><i>Nom</i></th>
-    <th><i>Status</i></th>
-    <th><i>Prix journalier</i></th>
-    <th><i>Espece</i></th>
-    <th><i>Taches possibles</i></th>
+    <th>Nom</th>
+    <th>Status</th>
+    <th>Prix journalier</th>
+    <th>Espece</th>
+    <th>Taches possibles</th>
     <th></th>
   </tr>
   </thead>
@@ -48,6 +54,6 @@
         <p><strong>Ajouter un animal</strong></p>
         <%= render :partial => "animals/form", :locals => {:isRemote => true, :fixedFarm => true} %>
     </div>
-    <%= link_to 'Edit', edit_ferme_path(@ferme) %> |
+    <%= link_to 'Modifier', edit_ferme_path(@ferme) %> |
 <% end %>
-<%= link_to 'Back', fermes_path %>
+<%= link_to 'Retour', fermes_path %>

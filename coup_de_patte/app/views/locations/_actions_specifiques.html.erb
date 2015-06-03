@@ -1,0 +1,25 @@
+<h2>Actions spécifiques</h2>
+<% if action.eql?("index") %>
+    <% if can? :manage, Location %>
+        <%= link_to 'Nouvelle location', new_location_path %>
+    <% end %>
+<% end %>
+<% if action.eql?("new") %>
+    <%= link_to 'Retour', locations_path %>
+<%end%>
+<% if action.eql?("edit") %>
+    <%= link_to 'Afficher', location_path(@location) %>
+    <br />
+    <% if can? :manage, Location %>
+        <%= link_to 'Nouvelle location', new_location_path %>
+    <% end %>
+<%end%>
+<% if action.eql?("show") %>
+    <% if can? :manage, @location %>
+        <%= link_to 'Mettre à jour', edit_location_path(@location) %>
+        <br />
+    <% end %>
+    <% if can? :manage, Location %>
+        <%= link_to 'Nouvelle location', new_location_path %>
+    <% end %>
+<%end%>

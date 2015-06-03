@@ -1,4 +1,11 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "show" } %>
+<% end %>
+
 <!--<p id="notice"><%= notice %></p>-->
+
+<h1>Animal</h1>
 
 <p>
   <strong>Nom:</strong>
@@ -41,6 +48,6 @@
 </p>
 
 <% if can? :manage, @animal %>
-    <%= link_to 'Edit', edit_animal_path(@animal) %> |
+    <%= link_to 'Modifier', edit_animal_path(@animal) %> |
 <% end %>
-<%= link_to 'Back', animals_path %>
+<%= link_to 'Retour', animals_path %>

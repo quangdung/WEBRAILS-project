@@ -1,0 +1,25 @@
+<h2>Actions spécifiques</h2>
+<% if action.eql?("index") %>
+    <% if can? :manage, Espece %>
+        <%= link_to 'Nouvelle espece', new_espece_path %>
+    <% end %>
+<% end %>
+<% if action.eql?("new") %>
+    <%= link_to 'Retour', especes_path %>
+<%end%>
+<% if action.eql?("edit") %>
+    <%= link_to 'Afficher', espece_path(@espece) %>
+    <br />
+    <% if can? :manage, Espece %>
+        <%= link_to 'Nouvelle espece', new_espece_path %>
+    <% end %>
+<%end%>
+<% if action.eql?("show") %>
+    <% if can? :manage, @espece %>
+        <%= link_to 'Mettre à jour', edit_espece_path(@espece) %>
+        <br />
+    <% end %>
+    <% if can? :manage, Espece %>
+        <%= link_to 'Nouvelle espece', new_espece_path %>
+    <% end %>
+<%end%>

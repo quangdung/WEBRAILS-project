@@ -9,23 +9,26 @@ body {
 
 
 .page {
-  width: 1000px;
+  width: 1200px;
   margin: 0 auto;
 }
 
 .content {
   float: right;
-  width: 700px;
+  width: 1000px;
   padding-top: 20px;
-  padding-right: 40px;
 }
 
 .actions_specifiques, .actions_generales {
   float: left;
   width: 200px;
-  font-size: 0.8em;
+  /*font-size: 0.8em;*/
   padding-top: 20px;
   padding-left: 0px;
+}
+
+.actions {
+  padding-bottom: 5px;
 }
 
 
@@ -82,6 +85,11 @@ th {
   text-align: left;
 }
 
+#siteTitle {
+	margin-top: 10px;
+	font-size: 36px;
+}
+
 h1, h2, h3 {
   margin: 0;
   line-height : 25px;
@@ -100,9 +108,9 @@ input[type=text], input[type=password], textarea{
 h1 { font-size: 25px; margin-bottom : 10px;}
 
 h2 { 
-  font-size: 14px;}
+  font-size: 18px;}
 
-h3 { }
+h3 { font-size: 14px; }
 
 p, ul, ol {
   margin-top: 0;
@@ -115,7 +123,7 @@ a { color: #41ACE7; }
 
 a:hover { background-color: #DDD; }
 
-a:visited { color: #41ACE7; }
+/*a:visited { color: #41ACE7; }*/
 
 input { font-size: 11px; }
 

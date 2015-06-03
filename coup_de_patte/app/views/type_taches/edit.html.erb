@@ -1,6 +1,10 @@
-<h1>Editing Type Tach</h1>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "edit" } %>
+<% end %>
+<h1>Modification d'un type de tache</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @type_tach %> |
-<%= link_to 'Back', type_taches_path %>
+<%= link_to 'Afficher', @type_tach %> |
+<%= link_to 'Retour', type_taches_path %>

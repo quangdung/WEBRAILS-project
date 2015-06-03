@@ -10,7 +10,21 @@
 <body>
 
 <div class="page">
-  <h1><%= "Coup de patte" %></h1>
+  <h1 id="siteTitle"><%= "Coup de patte" %></h1>
+
+  <div class="user_nav">
+    <% if user_signed_in? %>
+        <h2>Connecté (<%= current_user.email %>, <%= current_user.roles_as_text %>)</h2>
+        <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete %>
+        |
+        <%= link_to 'Modifiez vos données', edit_user_registration_path %>
+    <% else %>
+        <%= link_to 'Connexion', new_user_session_path %>
+        |
+        <%= link_to 'S\'enregistrer', new_user_registration_path %>
+    <% end %>
+  </div>
+
   <div class="content">
     <% if flash[:notice] %>
         <div class="notice_box">
@@ -35,6 +49,8 @@
     <%= link_to 'Liste des animaux', animals_path %>
     <br/>
     <%= link_to 'Liste des Fermes', fermes_path %>
+    <br/>
+
 
     <!-- Vue Paysan -->
     <% if can? :create, Location %>
@@ -44,36 +60,19 @@
 
     <!-- Vue Gérant -->
     <% if can? :update, Location %>
-        <br/>
         <%= link_to 'Gérer les locations', locations_path %>
+        <br/>
     <% end %>
 
     <!-- Vue admin -->
     <% if can? :manage, TypeTache %>
-        <%= link_to 'Types de tache', type_taches_path %>
+        <%= link_to 'Liste des types de tache', type_taches_path %>
         <br/>
     <% end %>
 
     <% if can? :manage, Espece %>
-        <%= link_to 'Especes', especes_path %>
+        <%= link_to 'Liste des especes', especes_path %>
     <% end %>
-
-    <br/>
-    <br/>
-    <div id="user_nav">
-      <% if user_signed_in? %>
-          Connecté en tant que <%= current_user.email %>
-          (<%= current_user.roles_as_text %>)
-          <br />
-          <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete %>
-          <br />
-          <%= link_to 'Modifiez vos données', edit_user_registration_path %>
-      <% else %>
-          <%= link_to 'Connexion', new_user_session_path %>
-          <br />
-          <%= link_to 'S\'enregistrer', new_user_registration_path %>
-      <% end %>
-    </div>
   </div>
 
 </div>

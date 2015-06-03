@@ -1,6 +1,10 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques", :locals => {:action => "index" } %>
+<% end %>
+
 <!--<p id="notice"><%= notice %></p>-->
 
-<h1>Listing Animals</h1>
+<h1>Liste des animaux</h1>
 
 <table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
@@ -27,5 +31,5 @@
 <br>
 
 <% if can? :manage, Animal %>
-    <%= link_to 'New Animal', new_animal_path %>
+    <%= link_to 'Nouveau animal', new_animal_path %>
 <% end %>

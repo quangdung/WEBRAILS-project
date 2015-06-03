@@ -1,6 +1,9 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques", :locals => {:action => "index" } %>
+<% end %>
 <!--<p id="notice"><%= notice %></p>-->
 
-<h1>Listing Locations</h1>
+<h1>Liste des locations</h1>
 
 <table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
@@ -36,15 +39,15 @@
         </td>
 
         <td>
-          <%= link_to 'Show', location, :class => 'btn btn-sm btn-default' %>
+          <%= link_to 'Afficher', location, :class => 'btn btn-sm btn-default' %>
 
           <% if can? :update, location %>
-            <%= link_to 'Edit', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
+            <%= link_to 'Modifier', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
           <% end %>
 
 
-          <%= link_to 'Edit', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
-          <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+          <%= link_to 'Modifier', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
+          <%= link_to 'Détruire', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -55,5 +58,5 @@
 <br>
 
 <% if can? :create, Location %>
-  <%= link_to 'New Location', new_location_path %>
+  <%= link_to 'Nouvelle location', new_location_path %>
 <% end %>

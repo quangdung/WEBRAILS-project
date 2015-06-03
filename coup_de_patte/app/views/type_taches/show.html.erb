@@ -1,9 +1,15 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "show" } %>
+<% end %>
 <!--<p id="notice"><%= notice %></p>-->
+
+<h1>Role</h1>
 
 <p>
   <strong>Nom:</strong>
   <%= @type_tach.nom %>
 </p>
 
-<%= link_to 'Edit', edit_type_tach_path(@type_tach) %> |
-<%= link_to 'Back', type_taches_path %>
+<%= link_to 'Modifier', edit_type_tach_path(@type_tach) %> |
+<%= link_to 'Retour', type_taches_path %>

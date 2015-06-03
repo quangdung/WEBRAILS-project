@@ -1,6 +1,10 @@
-<h1>Editing Ferme</h1>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "edit" } %>
+<% end %>
+<h1>Modification d'une ferme</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @ferme %> |
-<%= link_to 'Back', fermes_path %>
+<%= link_to 'Afficher', @ferme %> |
+<%= link_to 'Retour', fermes_path %>

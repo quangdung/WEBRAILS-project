@@ -1,6 +1,9 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques", :locals => {:action => "index" } %>
+<% end %>
 <!--<p id="notice"><%= notice %></p>-->
 
-<h1>Listing Fermes</h1>
+<h1>Liste des fermes</h1>
 
 <table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
@@ -19,10 +22,10 @@
         <td><%= ferme.adresse %></td>
         <td><%= ferme.user.nom + " " + ferme.user.prenom %></td>
         <td>
-          <%= link_to 'Show', ferme, :class => 'btn btn-sm btn-default' %>
+          <%= link_to 'Afficher', ferme, :class => 'btn btn-sm btn-default' %>
           <% if can? :manage, ferme %>
-            <%= link_to 'Edit', edit_ferme_path(ferme), :class => 'btn btn-sm btn-default' %>
-            <%= link_to 'Destroy', ferme, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+            <%= link_to 'Modifier', edit_ferme_path(ferme), :class => 'btn btn-sm btn-default' %>
+            <%= link_to 'Détruire', ferme, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
           <% end %>
         </td>
       </tr>
@@ -33,5 +36,5 @@
 <br>
 
 <% if can? :manage, Ferme %>
-    <%= link_to 'New Ferme', new_ferme_path %>
+    <%= link_to 'Nouvelle ferme', new_ferme_path %>
 <% end %>
