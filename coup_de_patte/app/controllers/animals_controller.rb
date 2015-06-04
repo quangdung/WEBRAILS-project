@@ -1,6 +1,27 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy, :remove_from_farm]
 
+  # def animal_taches
+  #   texte_a_rechercher = params[:texte] #Extraction du paramètre 'texte'
+  #   @prenoms_recherches = Prenom.where("texte like '%#{texte_a_rechercher}%'")
+  #   render :partial => "recherche_prenom"
+  # end
+
+  # ajax
+  def animal_selection
+    # @taches_possibles = TypeTache.all
+    # @animal = Animal.find(params[:animal])
+    # @regions = @country.regions
+
+    # respond_to do |format|
+    #   format.js {  }
+    # end
+
+    texte_a_rechercher = params[:texte] #Extraction du paramètre 'texte'
+    @animal_choisi = Animal.where("nom like '%#{texte_a_rechercher}%'")
+    render :partial => 'animal_selection'
+  end
+
   # GET /animals
   # GET /animals.json
   def index

@@ -19,7 +19,13 @@ Rails.application.routes.draw do
     member do
       put :remove_from_farm
     end
+
+    collection do
+      get :animal_selection
+    end
   end
+
+
 
   resources :fermes
 

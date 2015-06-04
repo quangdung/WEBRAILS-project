@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /locations
   # GET /locations.json
   def index
@@ -19,6 +21,9 @@ class LocationsController < ApplicationController
     @location = Location.new
     @animals = Animal.all
     @statusLocation = StatusLocation.all
+
+    @location.status_location = @statusLocation.first
+
     # @user = User.find(params[:user_id])
   end
 
@@ -36,9 +41,11 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     @animals = Animal.all
+    @statusLocation = StatusLocation.all
 
-    @location.user_id = :user_id
-    @location.status_location_id = 1
+    @location.user = current_user
+    @location.status_location = @statusLocation.first
+    @location.animal = @animals.first
 
     authorize! :create, @location, :message => "Vous n'avez pas l'autorisation"
 

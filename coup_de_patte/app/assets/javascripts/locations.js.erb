@@ -1,0 +1,35 @@
+/**
+ * Created by qdn on 29.05.15.
+ */
+
+$('#animal_selection').change(function(){
+  $ajax({
+    url: "animal_selection",
+    type: "GET",
+    data: {select_tag_value: $('#select_tag_id option:selected').text()},
+  })
+});
+
+/*$('#animal_selection').change(function() {
+  $.ajax({ type: "GET",
+    url: "http://your_url/",
+    success : function(text) {
+      alert('success')
+    }
+  });
+});*/
+
+/*$("#animal_selection").live('change', function() { alert('Hello');
+    $.get("<%= Rails.application.routes.url_helpers.animal_selection_animals_path %>",
+      {texte:$(this).val()}, function(data){
+        $("#resultats").html(data);
+      });
+})*/
+
+//$('#animal_selection').live('change', function(){
+//    $.ajax({
+//        url: "find/animal_selection",
+//        type: "GET",
+//        data: {'animal=' :+ $('#animal_selection option:selected').value() }
+//    })
+//});

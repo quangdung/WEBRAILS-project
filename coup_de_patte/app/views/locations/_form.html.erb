@@ -23,8 +23,12 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :animal %><br>
-    <%= f.collection_select :animal_id, @animals, :id, :nom %>
+<!--    <%= f.label :animal %><br>
+    <%= f.collection_select :animal_id, @animals, :id, :nom %>-->
+
+    <%= label_tag :animal_selection, 'Animal' %>
+    <%= select_tag :animal_selection, options_from_collection_for_select(@animals, :id, :nom) %>
+
   </div>
 
   <!-- Vue Edit -->
@@ -41,8 +45,7 @@
     </div>
 
 
-
-    <div class="field form-group">
+    <div class="field form-group" id="resultats">
       <%= f.label 'Types de tâches possibles' %><br>
       <% for typeTache in @location.animal.type_tache.all %>
         <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
@@ -61,23 +64,20 @@
     </div>
 
 
-    <div class="field form-group">
+    <div class="field">
       <%= f.label 'Status de location' %> <br>
       <%= @statusLocation.first.nom  %>
     </div>
 
 
-
-    <div class="field form-group">
+    <div class="field form-group" id="resultats">
       <%= f.label 'Types de tâches possibles' %><br>
       <% for typeTache in @animals.first.type_tache %>
-        <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
+        <%= check_box_tag 'location[type_taches][]', typeTache.id, checked = false %>
         <%= typeTache.nom %>
         <br>
       <% end %>
     </div>
-
-
   <% end %>
 
   <div class="actions">
