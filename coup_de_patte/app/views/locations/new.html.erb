@@ -1,5 +1,9 @@
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "new" } %>
+<% end %>
 <h1>Nouvelle location</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Retour', locations_path %>

@@ -1,5 +1,9 @@
-<h1>New Espece</h1>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "new" } %>
+<% end %>
+<h1>Nouvelle espece</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', especes_path %>
+<%= link_to 'Retour', especes_path %>

@@ -1,6 +1,9 @@
-<h1>Editing Location</h1>
-
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "edit" } %>
+<% end %>
+<h1>Modification d'une location</h1>
 <%= render 'form' %>
 
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Afficher', @location %> |
+<%= link_to 'Retour', locations_path %>

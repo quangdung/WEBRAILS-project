@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "show" } %>
+<% end %>
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1>Espece</h1>
 
 <p>
   <strong>Nom:</strong>
   <%= @espece.nom %>
 </p>
 
-<%= link_to 'Edit', edit_espece_path(@espece) %> |
-<%= link_to 'Back', especes_path %>
+<%= link_to 'Modifier', edit_espece_path(@espece) %> |
+<%= link_to 'Retour', especes_path %>

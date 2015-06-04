@@ -1,0 +1,25 @@
+<h2>Actions spécifiques</h2>
+<% if action.eql?("index") %>
+    <% if can? :manage, Ferme %>
+        <%= link_to 'Nouvelle ferme', new_ferme_path %>
+    <% end %>
+<% end %>
+<% if action.eql?("new") %>
+    <%= link_to 'Retour', fermes_path %>
+<%end%>
+<% if action.eql?("edit") %>
+    <%= link_to 'Afficher', ferme_path(@ferme) %>
+    <br />
+    <% if can? :manage, Ferme %>
+        <%= link_to 'Nouvelle ferme', new_ferme_path %>
+    <% end %>
+<%end%>
+<% if action.eql?("show") %>
+    <% if can? :manage, @ferme %>
+        <%= link_to 'Mettre à jour', edit_ferme_path(@ferme) %>
+        <br />
+    <% end %>
+    <% if can? :manage, Ferme %>
+        <%= link_to 'Nouvelle ferme', new_ferme_path %>
+    <% end %>
+<%end%>

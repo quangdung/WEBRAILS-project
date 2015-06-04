@@ -1,5 +1,9 @@
-<h1>New Ferme</h1>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "new" } %>
+<% end %>
+<h1>Nouvelle ferme</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', fermes_path %>
+<%= link_to 'Retour', fermes_path %>

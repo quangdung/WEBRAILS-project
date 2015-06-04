@@ -1,0 +1,25 @@
+<h2>Actions spécifiques</h2>
+<% if action.eql?("index") %>
+    <% if can? :manage, TypeTache %>
+        <%= link_to 'Nouveau type de tache', new_type_tach_path %>
+    <% end %>
+<% end %>
+<% if action.eql?("new") %>
+    <%= link_to 'Retour', type_taches_path %>
+<%end%>
+<% if action.eql?("edit") %>
+    <%= link_to 'Afficher', type_tach_path(@type_tach) %>
+    <br />
+    <% if can? :manage, TypeTache %>
+        <%= link_to 'Nouveau type de tache', new_type_tach_path %>
+    <% end %>
+<%end%>
+<% if action.eql?("show") %>
+    <% if can? :manage, @type_tach %>
+        <%= link_to 'Mettre à jour', edit_type_tach_path(@type_tach) %>
+        <br />
+    <% end %>
+    <% if can? :manage, TypeTache %>
+        <%= link_to 'Nouveau type de tache', new_type_tach_path %>
+    <% end %>
+<%end%>

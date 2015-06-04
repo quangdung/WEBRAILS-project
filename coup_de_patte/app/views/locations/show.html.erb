@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "show" } %>
+<% end %>
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1>Location</h1>
 
 <p>
   <strong>Date:</strong>
@@ -36,5 +42,5 @@
 </ul>
 </p>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Modifier', edit_location_path(@location) %> |
+<%= link_to 'Retour', locations_path %>

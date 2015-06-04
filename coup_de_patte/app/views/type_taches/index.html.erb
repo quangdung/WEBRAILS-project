@@ -1,6 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques", :locals => {:action => "index" } %>
+<% end %>
+<!--<p id="notice"><%= notice %></p>-->
 
-<h1>Listing Type Taches</h1>
+<h1>Liste des types de tache</h1>
 
 <table class="table table-striped table-hover table-bordered table-responsive">
   <thead>
@@ -15,9 +18,9 @@
       <tr>
         <td><%= type_tach.nom %></td>
         <td>
-          <%= link_to 'Show', type_tach %>
-          <%= link_to 'Edit', edit_type_tach_path(type_tach) %>
-          <%= link_to 'Destroy', type_tach, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+          <%= link_to 'Afficher', type_tach, :class => 'btn btn-sm btn-default' %>
+          <%= link_to 'Modifier', edit_type_tach_path(type_tach), :class => 'btn btn-sm btn-default' %>
+          <%= link_to 'Détruire', type_tach, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -26,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Type tache', new_type_tach_path %>
+<%= link_to 'Nouveau type de tâche', new_type_tach_path %>

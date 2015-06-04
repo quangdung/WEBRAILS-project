@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>S'enregistrer</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -30,20 +30,20 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :mot_de_passe %>
     <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Au minimum <%= @minimum_password_length %> charactères)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :confirmation_mot_de_passe %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "S'inscrire", :class => "btn btn-sm btn-default" %>
   </div>
 <% end %>
 

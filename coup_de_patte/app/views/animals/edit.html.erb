@@ -1,6 +1,11 @@
-<h1>Editing Animal</h1>
+<% content_for :actions_specifiques do %>
+    <%= render :partial => "actions_specifiques",
+               :locals => {:action => "edit" } %>
+<% end %>
+
+<h1>Modification d'un animal</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @animal %> |
-<%= link_to 'Back', animals_path %>
+<%= link_to 'Afficher', @animal %> |
+<%= link_to 'Retour', animals_path %>
