@@ -75,7 +75,7 @@ class LocationsController < ApplicationController
     if params[:location][:type_taches]
       for id_type_tache in params[:location][:type_taches]
         aType = TypeTache.find(id_type_tache)
-        if (@location.animal.type_tache.contains?(aType))
+        if (!(@location.animal.type_tache.include?(aType)))
           flash[:error] =  'Cet animal ne peut pas faire ces tâches'
           redirect_to new_location_path(animal_id: @location.animal_id)
           return
