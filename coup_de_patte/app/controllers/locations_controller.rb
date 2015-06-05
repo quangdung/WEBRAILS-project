@@ -3,17 +3,6 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
 
-  def delete
-    authorize! :delete, @location, :message => "Vous n'avez pas l'autorisation"
-
-    @location.
-    respond_to do |format|
-      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-
   # GET /locations
   # GET /locations.json
   def index
@@ -101,6 +90,22 @@ class LocationsController < ApplicationController
   def update
     authorize! :update, @location, :message => "Vous n'avez pas l'autorisation"
 
+    if(!(@location.animal.status_animal.nom == "disponible"))
+      flash[:error] =  'L\'animal n\'est pas disponible actuellement'
+      redirect_to edit_location_path(animal_id: @location.animal_id)
+      return
+    end
+
+    for location in @location.animal.locations
+      if(!(location.status_location == "Annulé"))
+        if(!((location.date + location.dureeJour <= @location.date) || (@location.date + @location.dureeJour <= location.date)))
+          flash[:error] =  'Conflit avec une autre location'
+          redirect_to edit_location_path(animal_id: @location.animal_id)
+          return
+        end
+      end
+    end
+
     # updating TypeTaches
     @location.type_tache.each do |aType|
       @location.type_tache.delete(aType)
@@ -109,6 +114,11 @@ class LocationsController < ApplicationController
     if params[:location][:type_taches]
       for id_type_tache in params[:location][:type_taches]
         aType = TypeTache.find(id_type_tache)
+        if (!(@location.animal.type_tache.include?(aType)))
+          flash[:error] =  'Cet animal ne peut pas faire ces tâches'
+          redirect_to edit_location_path(animal_id: @location.animal_id)
+          return
+        end
         @location.type_tache << aType
       end
     end

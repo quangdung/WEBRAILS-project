@@ -11,6 +11,7 @@
       <th>Date</th>
       <th>Durée (jours)</th>
       <th>Animal</th>
+      <th>Status d'animal</th>
       <th>Paysan</th>
       <th>Status de location</th>
       <th>Type de tâche</th>
@@ -25,6 +26,7 @@
         <td><%= location.date %></td>
         <td><%= location.dureeJour %></td>
         <td><%= link_to location.animal.nom, animal_path(location.animal) %></td>
+        <td><%= location.animal.status_animal.nom %> </td>
         <td><%= location.user.full_name %></td>
         <td><%= location.status_location.nom %></td>
 
