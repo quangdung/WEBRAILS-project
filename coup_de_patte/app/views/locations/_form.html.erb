@@ -22,6 +22,7 @@
     <%= f.number_field :dureeJour, min: 1 %>
   </div>
 
+
   <!-- Vue Edit -->
   <% if !@location.new_record? %>
     <div class="field form-group">
@@ -55,7 +56,8 @@
   <% else %>
     <div class="field form-group">
       <%= f.label :animal %><br>
-      <%= @animal.nom %>
+      <%= @location.animal.nom %>
+      <%= f.hidden_field :animal_id %>
     </div>
 
     <div class="field form-group">
@@ -66,14 +68,14 @@
 
     <div class="field">
       <%= f.label 'Status de location' %> <br>
-      <%= @statusLocations.first.nom  %>
+      <%= @location.status_location.nom  %>
     </div>
 
 
     <div class="field form-group" id="resultats">
       <%= f.label 'Types de tâches possibles' %><br>
-      <% for typeTache in @animal.type_tache %>
-        <%= check_box_tag 'location[type_taches][]', typeTache.id, checked = false %>
+      <% for typeTache in @location.animal.type_tache %>
+        <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
         <%= typeTache.nom %>
         <br>
       <% end %>

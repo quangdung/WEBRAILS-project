@@ -1,3 +1,4 @@
+# encoding: utf-8
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
@@ -29,13 +30,9 @@ class LocationsController < ApplicationController
     authorize! :create, Location, :message => "Vous n'avez pas l'autorisation"
 
     @location = Location.new
-    # @animals = Animal.all
-    @statusLocations = StatusLocation.all
 
-    @location.status_location = @statusLocations.first
-    @animal = Animal.where(id: params[:animal_id]).first
-
-    # @user = User.find(params[:user_id])
+    @location.status_location = StatusLocation.find_by_nom("En attente")
+    @location.animal = Animal.find(params[:animal_id])
   end
 
   # GET /locations/1/edit
@@ -51,20 +48,38 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-    @animals = Animal.all
-    @statusLocations = StatusLocation.all
-
-    @location.user = current_user
-    @location.status_location = @statusLocations.first
-    # @location.animal = @animals.first
-    @animal = Animal.where(id: params[:animal_id]).first
 
     authorize! :create, @location, :message => "Vous n'avez pas l'autorisation"
+
+    if(!(@location.animal.status_animal.nom == "disponible"))
+      flash[:error] =  'L\'animal n\'est pas disponible actuellement'
+      redirect_to new_location_path(animal_id: @location.animal_id)
+      return
+    end
+
+    for location in @location.animal.locations
+      if(!(location.status_location == "Annulé"))
+        if(!((location.date + location.dureeJour <= @location.date) || (@location.date + @location.dureeJour <= location.date)))
+          flash[:error] =  'Conflit avec une autre location'
+          redirect_to new_location_path(animal_id: @location.animal_id)
+          return
+        end
+      end
+    end
+
+    @location.user_id = current_user.id
+    #location status is "en attente"
+    @location.status_location_id = 1
 
     #updating TypeTaches
     if params[:location][:type_taches]
       for id_type_tache in params[:location][:type_taches]
         aType = TypeTache.find(id_type_tache)
+        if (@location.animal.type_tache.contains?(aType))
+          flash[:error] =  'Cet animal ne peut pas faire ces tâches'
+          redirect_to new_location_path(animal_id: @location.animal_id)
+          return
+        end
         @location.type_tache << aType
       end
     end
@@ -75,7 +90,7 @@ class LocationsController < ApplicationController
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
-        format.html { render :new }
+        format.html { render :new, animal_id: @location.animal_id}
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
     end
