@@ -1,31 +1,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-
   # before_action :set_user, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :except => :index
-
-
-  def edit_roles
-    @user = User.find(params[:id])
-  end
-
-  def save_roles
-    @user = User.find(params[:id])
-
-    @user.roles.each do |le_role|
-      @user.roles.delete(le_role)
-    end
-
-    if params[:user]
-      for id_role in params[:user][:role_ids]
-        le_role = Role.find(id_role)
-        @user.roles << le_role
-      end
-    end
-
-    redirect_to users_path
-  end
 
   # GET /users
   # GET /users.json

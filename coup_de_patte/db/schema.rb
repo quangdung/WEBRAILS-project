@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522010102) do
+ActiveRecord::Schema.define(version: 20150604101010) do
 
   create_table "animals", force: :cascade do |t|
     t.string   "nom",              limit: 255
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150522010102) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  add_index "locations", ["animal_id"], name: "fk_animals_locations", using: :btree
 
   create_table "locations_type_taches", force: :cascade do |t|
     t.integer  "type_tache_id", limit: 4
@@ -119,4 +121,5 @@ ActiveRecord::Schema.define(version: 20150522010102) do
 
   add_foreign_key "animals", "especes", name: "fk_animals_especes"
   add_foreign_key "animals_type_taches", "type_taches", column: "type_tache_id", name: "fk_animals_type_taches"
+  add_foreign_key "locations", "animals", name: "fk_animals_locations", on_delete: :cascade
 end

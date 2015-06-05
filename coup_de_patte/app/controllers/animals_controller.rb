@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy, :remove_from_farm]
 
@@ -109,6 +110,17 @@ class AnimalsController < ApplicationController
   # DELETE /animals/1.json
   def destroy
     authorize! :delete, @animal, :message => "Vous n'avez pas l'autorisation"
+
+    for location in @animal.locations
+      if(!(location.status_location == "Confirmé"))
+        if(Date.today >= location.date && Date.today <= location.date + location.dureeJour)
+          flash[:error] =  'Suppression impossible, cet animal est actuellement en location'
+          redirect_to animal_path(@animal)
+          return
+        end
+      end
+    end
+
     @animal.destroy
     respond_to do |format|
       format.html { redirect_to animals_url, notice: 'Animal was successfully destroyed.' }

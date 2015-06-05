@@ -2,16 +2,9 @@ Rails.application.routes.draw do
   resources :roles
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users do
-    member do
-      put :save_roles
-      get :edit_roles
-    end
-  end
+  resources :users
 
-
-
-  resources :locations
+  resources :locations, only: [:index, :show, :new, :create, :edit, :update]
 
   resources :type_taches
 
@@ -20,8 +13,6 @@ Rails.application.routes.draw do
       put :remove_from_farm
     end
   end
-
-
 
   resources :fermes
 
