@@ -43,11 +43,8 @@
 
           <% if can? :update, location %>
             <%= link_to 'Modifier', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
+            <!--<%= link_to 'Détruire', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>-->
           <% end %>
-
-
-          <%= link_to 'Modifier', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
-          <%= link_to 'Détruire', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
         </td>
       </tr>
     <% end %>

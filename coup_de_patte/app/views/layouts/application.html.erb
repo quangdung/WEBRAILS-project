@@ -52,11 +52,7 @@
     <br/>
 
 
-    <!-- Vue Paysan -->
-    <% if can? :create, Location %>
-        <%= link_to 'Louer un animal', new_location_path({:user_id => current_user.id}) %>
-        <br/>
-    <% end %>
+
 
     <!-- Vue Gérant -->
     <% if can? :update, Location %>

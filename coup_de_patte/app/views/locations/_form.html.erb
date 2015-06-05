@@ -14,7 +14,7 @@
 
   <div class="field form-group">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, order: [:day, :month, :year] %>
   </div>
 
   <div class="field form-group">
@@ -22,17 +22,13 @@
     <%= f.number_field :dureeJour, min: 1 %>
   </div>
 
-  <div class="field form-group">
-<!--    <%= f.label :animal %><br>
-    <%= f.collection_select :animal_id, @animals, :id, :nom %>-->
-
-    <%= label_tag :animal_selection, 'Animal' %>
-    <%= select_tag :animal_selection, options_from_collection_for_select(@animals, :id, :nom) %>
-
-  </div>
-
   <!-- Vue Edit -->
   <% if !@location.new_record? %>
+    <div class="field form-group">
+      <%= f.label :animal %><br>
+      <%= @location.animal.nom %>
+    </div>
+
     <div class="field form-group">
       <%= f.label :paysan %><br>
       <%= @location.user.full_name %>
@@ -41,7 +37,7 @@
 
     <div class="field form-group">
       <%= f.label 'Status de location' %> <br>
-      <%= f.collection_select :status_location_id, @statusLocation, :id, :nom  %>
+      <%= f.collection_select :status_location_id, @statusLocations, :id, :nom  %>
     </div>
 
 
@@ -57,6 +53,10 @@
 
   <!-- Vue New -->
   <% else %>
+    <div class="field form-group">
+      <%= f.label :animal %><br>
+      <%= @animal.nom %>
+    </div>
 
     <div class="field form-group">
       <%= f.label :paysan %><br>
@@ -66,13 +66,13 @@
 
     <div class="field">
       <%= f.label 'Status de location' %> <br>
-      <%= @statusLocation.first.nom  %>
+      <%= @statusLocations.first.nom  %>
     </div>
 
 
     <div class="field form-group" id="resultats">
       <%= f.label 'Types de tâches possibles' %><br>
-      <% for typeTache in @animals.first.type_tache %>
+      <% for typeTache in @animal.type_tache %>
         <%= check_box_tag 'location[type_taches][]', typeTache.id, checked = false %>
         <%= typeTache.nom %>
         <br>

@@ -19,7 +19,15 @@
         <%= link_to 'Mettre à jour', edit_animal_path(@animal) %>
         <br />
     <% end %>
+
+
     <% if can? :manage, Animal %>
         <%= link_to 'Nouveau animal', new_animal_path %>
     <% end %>
+
+  <!-- Vue Paysan -->
+  <% if can? :create, Location %>
+    <%= link_to 'Louer cet animal', new_location_path({:animal_id => @animal.id}) %>
+    <br/>
+  <% end %>
 <%end%>

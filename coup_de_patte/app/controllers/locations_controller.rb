@@ -2,6 +2,16 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
 
+  def delete
+    authorize! :delete, @location, :message => "Vous n'avez pas l'autorisation"
+
+    @location.
+    respond_to do |format|
+      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
   # GET /locations
   # GET /locations.json
@@ -19,10 +29,11 @@ class LocationsController < ApplicationController
     authorize! :create, Location, :message => "Vous n'avez pas l'autorisation"
 
     @location = Location.new
-    @animals = Animal.all
-    @statusLocation = StatusLocation.all
+    # @animals = Animal.all
+    @statusLocations = StatusLocation.all
 
-    @location.status_location = @statusLocation.first
+    @location.status_location = @statusLocations.first
+    @animal = Animal.where(id: params[:animal_id]).first
 
     # @user = User.find(params[:user_id])
   end
@@ -31,7 +42,7 @@ class LocationsController < ApplicationController
   def edit
     @location = Location.find(params[:id])
     @animals = Animal.all
-    @statusLocation = StatusLocation.all
+    @statusLocations = StatusLocation.all
 
     authorize! :update, @location, :message => "Vous n'avez pas l'autorisation"
   end
@@ -41,11 +52,12 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     @animals = Animal.all
-    @statusLocation = StatusLocation.all
+    @statusLocations = StatusLocation.all
 
     @location.user = current_user
-    @location.status_location = @statusLocation.first
-    @location.animal = @animals.first
+    @location.status_location = @statusLocations.first
+    # @location.animal = @animals.first
+    @animal = Animal.where(id: params[:animal_id]).first
 
     authorize! :create, @location, :message => "Vous n'avez pas l'autorisation"
 
