@@ -42,8 +42,7 @@
     </div>
 
 
-
-    <div class="field form-group">
+    <div class="field form-group" id="resultats">
       <%= f.label 'Types de tâches possibles' %><br>
       <% for typeTache in @location.animal.type_tache.all %>
         <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
@@ -62,14 +61,13 @@
     </div>
 
 
-    <div class="field form-group">
+    <div class="field">
       <%= f.label 'Status de location' %> <br>
       <%= @location.status_location.nom  %>
     </div>
 
 
-
-    <div class="field form-group">
+    <div class="field form-group" id="resultats">
       <%= f.label 'Types de tâches possibles' %><br>
       <% for typeTache in @location.animal.type_tache %>
         <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
@@ -77,8 +75,6 @@
         <br>
       <% end %>
     </div>
-
-
   <% end %>
 
   <div class="actions">
