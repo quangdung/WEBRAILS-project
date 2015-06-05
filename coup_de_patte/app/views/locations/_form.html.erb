@@ -24,7 +24,8 @@
 
   <div class="field form-group">
     <%= f.label :animal %><br>
-    <%= f.collection_select :animal_id, @animals, :id, :nom %>
+    <%= @location.animal.nom %>
+    <%= f.hidden_field :animal_id %>
   </div>
 
   <!-- Vue Edit -->
@@ -63,14 +64,14 @@
 
     <div class="field form-group">
       <%= f.label 'Status de location' %> <br>
-      <%= @statusLocation.first.nom  %>
+      <%= @location.status_location.nom  %>
     </div>
 
 
 
     <div class="field form-group">
       <%= f.label 'Types de tâches possibles' %><br>
-      <% for typeTache in @animals.first.type_tache %>
+      <% for typeTache in @location.animal.type_tache %>
         <%= check_box_tag 'location[type_taches][]', typeTache.id, @location.type_tache.include?(typeTache) %>
         <%= typeTache.nom %>
         <br>
