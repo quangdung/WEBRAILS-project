@@ -26,8 +26,10 @@
     <% end %>
 
   <!-- Vue Paysan -->
-  <% if can? :create, Location %>
-    <%= link_to 'Louer cet animal', new_location_path({:animal_id => @animal.id}) %>
-    <br/>
+  <% if (@animal.status_animal.nom == 'disponible') %>
+    <% if can? :create, Location %>
+      <%= link_to 'Louer cet animal', new_location_path({:animal_id => @animal.id}) %>
+      <br/>
+    <% end %>
   <% end %>
 <%end%>

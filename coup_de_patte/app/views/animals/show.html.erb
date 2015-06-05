@@ -55,11 +55,7 @@
     <tr>
       <th>Date</th>
       <th>Durée (jours)</th>
-
-      <% if can? :update, Location %>
-        <th>Paysan</th>
-      <% end %>
-
+      <th>Paysan</th>
       <th>Status de location</th>
       <th>Type de tâche</th>
 
@@ -77,6 +73,13 @@
           <tr>
             <td><%= location.date %></td>
             <td><%= location.dureeJour %></td>
+            <td>
+              <% if (location.user == current_user) %>
+                <%= location.user.full_name %>
+              <% else %>
+                (confidentiel)
+              <% end %>
+            </td>
             <td><%= location.status_location.nom %></td>
 
             <td>
@@ -117,7 +120,6 @@
             <td>
               <%= link_to 'Afficher', location, :class => 'btn btn-sm btn-default' %>
               <%= link_to 'Modifier', edit_location_path(location), :class => 'btn btn-sm btn-default' %>
-              <%= link_to 'Détruire', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
             </td>
           </tr>
       <% end %>
