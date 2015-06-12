@@ -7,7 +7,6 @@ class AnimalsController < ApplicationController
   # GET /animals.json
   def index
     @animals = Animal.all
-    # @ferme = @animal.ferme
   end
 
   # GET /animals/1
@@ -22,7 +21,6 @@ class AnimalsController < ApplicationController
     @especes = Espece.all
     @status_animals = StatusAnimal.all
     @fermes = Ferme.where(user_id: current_user.id)
-    #render :partial => "animals/form", :locals => {:isRemote => true}
   end
 
   # GET /animals/1/edit
