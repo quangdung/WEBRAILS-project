@@ -18,3 +18,24 @@ c:
   animal_id: 2
   created_at: 2015-05-08 11:34:000
   updated_at: 2015-05-08 11:34:000
+
+d:
+  id: 4
+  type_tache_id: 4
+  animal_id: 3
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000
+
+e:
+  id: 5
+  type_tache_id: 5
+  animal_id: 3
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000
+
+f:
+  id: 6
+  type_tache_id: 5
+  animal_id: 4
+  created_at: 2015-05-08 11:34:000
+  updated_at: 2015-05-08 11:34:000

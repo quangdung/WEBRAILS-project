@@ -2,7 +2,7 @@
 
 loc1:
   id: 1
-  date: 2015-05-08
+  date: 2015-06-20
   dureeJour: 5
   animal_id: 1
   user_id: 3
@@ -11,8 +11,25 @@ loc1:
 
 loc2:
   id: 2
-  date: 2015-05-10
+  date: 2015-06-30
   dureeJour: 7
   animal_id: 2
   user_id: 4
   status_location_id: 1
+
+loc3:
+  id: 3
+  date: 2015-06-25
+  dureeJour: 3
+  animal_id: 2
+  user_id: 4
+  status_location_id: 1
+
+
+loc4:
+  id: 4
+  date: 2015-06-25
+  dureeJour: 4
+  animal_id: 1
+  user_id: 2
+  status_location_id: 3

@@ -17,3 +17,20 @@ poule1:
   ferme_id: 2
   user_id: 2
   espece_id: 8
+
+chevre1:
+  id: 3
+  nom: Chevre 1
+  status_animal_id: 2
+  prix_journalier: 20.0
+  ferme_id: 2
+  user_id: 2
+  espece_id: 4
+
+bouc1:
+  id: 4
+  nom: Bouc 1
+  status_animal_id: 1
+  prix_journalier: 10.0
+  user_id: 2
+  espece_id: 5
