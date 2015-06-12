@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
+    authorize! :read, @location, :message => "Vous n'avez pas l'autorisation"
     @locations = Location.all
   end
 
@@ -48,7 +49,8 @@ class LocationsController < ApplicationController
 
     for location in @location.animal.locations
       if(!(location.status_location == "Annulé"))
-        if(!((location.date + location.dureeJour <= @location.date) || (@location.date + @location.dureeJour <= location.date)))
+        if(!((location.date + location.dureeJour <= @location.date) ||
+            (@location.date + @location.dureeJour <= location.date)))
           flash[:error] =  'Conflit avec une autre location'
           redirect_to new_location_path(animal_id: @location.animal_id)
           return
@@ -97,8 +99,9 @@ class LocationsController < ApplicationController
     end
 
     for location in @location.animal.locations
-      if(!(location.status_location == "Annulé"))
-        if(!((location.date + location.dureeJour <= @location.date) || (@location.date + @location.dureeJour <= location.date)))
+      if(!(location.status_location == "Annulé") && location.id != @location.id)
+        if(!((location.date + location.dureeJour <= @location.date) ||
+            (@location.date + @location.dureeJour <= location.date)))
           flash[:error] =  'Conflit avec une autre location'
           redirect_to edit_location_path(animal_id: @location.animal_id)
           return

@@ -37,8 +37,8 @@ class FermesController < ApplicationController
   # POST /fermes.json
   def create
     @ferme = Ferme.new(ferme_params)
+    @ferme.user_id = current_user.id
     authorize! :create, @ferme, :message => "Vous n'avez pas l'autorisation"
-	  @ferme.user_id = current_user.id
 
     #updating Animals
     if params[:ferme][:animals]

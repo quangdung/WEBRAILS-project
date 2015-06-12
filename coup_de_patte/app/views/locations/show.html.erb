@@ -42,5 +42,10 @@
 </ul>
 </p>
 
-<%= link_to 'Modifier', edit_location_path(@location) %> |
+
+<% if can? :manage, Location %>
+  <%= link_to 'Modifier', edit_location_path(@location) %> |
+<% end %>
+
+
 <%= link_to 'Retour', locations_path %>

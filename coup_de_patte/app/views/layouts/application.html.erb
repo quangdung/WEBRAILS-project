@@ -48,11 +48,14 @@
     <!-- Vue Public -->
     <%= link_to 'Liste des animaux', animals_path %>
     <br/>
-    <%= link_to 'Liste des Fermes', fermes_path %>
+    <%= link_to 'Liste des fermes', fermes_path %>
     <br/>
 
-
-
+    <!--Vue Paysan-->
+    <% if can? :create, Location %>
+      <%= link_to 'Liste des locations', locations_path %>
+      <br/>
+    <% end %>
 
     <!-- Vue Gérant -->
     <% if can? :update, Location %>

@@ -7,6 +7,7 @@ class AnimalsController < ApplicationController
   # GET /animals.json
   def index
     @animals = Animal.all
+    # @ferme = @animal.ferme
   end
 
   # GET /animals/1
@@ -113,7 +114,7 @@ class AnimalsController < ApplicationController
 
     for location in @animal.locations
       if(!(location.status_location == "Confirmé"))
-        if(Date.today >= location.date && Date.today <= location.date + location.dureeJour)
+        if (Date.today >= location.date && Date.today <= location.date + location.dureeJour)
           flash[:error] =  'Suppression impossible, cet animal est actuellement en location'
           redirect_to animal_path(@animal)
           return

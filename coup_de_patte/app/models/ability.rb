@@ -19,6 +19,7 @@ class Ability
       can :read, :all
 
       #Gerant can manage his own farms
+      # can :create, Ferme
       can :manage, Ferme do |ferme|
         ferme.user.id == user.id
       end

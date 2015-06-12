@@ -27,7 +27,21 @@
         <td><%= location.dureeJour %></td>
         <td><%= link_to location.animal.nom, animal_path(location.animal) %></td>
         <td><%= location.animal.status_animal.nom %> </td>
-        <td><%= location.user.full_name %></td>
+
+        <% if can? :update, Location %>
+          <% if (location.animal.user.id == current_user.id) %>
+            <td><%= location.user.full_name %></td>
+          <% else %>
+            <td>(confidentiel)</td>
+          <% end %>
+        <% else %>
+          <% if (current_user.id == location.user.id) %>
+            <td><%= location.user.full_name %></td>
+          <% else %>
+            <td>(confidentiel)</td>
+          <% end %>
+        <% end %>
+
         <td><%= location.status_location.nom %></td>
 
         <td>
@@ -56,6 +70,3 @@
 
 <br>
 
-<% if can? :create, Location %>
-  <%= link_to 'Nouvelle location', new_location_path %>
-<% end %>

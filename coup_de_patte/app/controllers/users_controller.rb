@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     # @user = User.find(params[:id])
+    # @fermes = @user.fermes
   end
 
   # GET /users/1

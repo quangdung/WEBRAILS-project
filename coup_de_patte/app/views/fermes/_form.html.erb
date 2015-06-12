@@ -23,11 +23,12 @@
     <table class="table table-striped table-hover table-bordered table-responsive">
       <thead>
       <tr>
-		<th>Nom</th>
-		<th>Status</th>
-		<th>Prix journalier</th>
-		<th>Espece</th>
-		<th>Taches possibles</th>
+        <th>Nom</th>
+        <th>Status</th>
+        <th>Prix journalier</th>
+        <th>Ferme</th>
+        <th>Espece</th>
+        <th>Taches possibles</th>
         <th></th>
         <th>Dans cette ferme</th>
       </tr>
@@ -36,7 +37,7 @@
       <tbody id="animals">
       <% for animal in @animals %>
           <tr>
-            <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => false, :printRemoveFarm => false} %>
+            <%= render :partial => 'animals/animal', :locals => {:animal => animal, :printFarm => true, :printRemoveFarm => false} %>
             <td><%= check_box_tag "ferme[animals][]", animal.id, @ferme.animals.include?(animal) %></td>
           </tr>
       <% end %>

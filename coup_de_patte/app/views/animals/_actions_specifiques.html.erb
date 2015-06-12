@@ -1,7 +1,7 @@
 <h2>Actions spécifiques</h2>
 <% if action.eql?("index") %>
     <% if can? :manage, Animal %>
-        <%= link_to 'Nouveau animal', new_animal_path %>
+        <%= link_to 'Nouvel animal', new_animal_path %>
     <% end %>
 <% end %>
 <% if action.eql?("new") %>
@@ -11,7 +11,7 @@
     <%= link_to 'Afficher', animal_path(@animal) %>
     <br />
     <% if can? :manage, Animal %>
-        <%= link_to 'Nouveau animal', new_animal_path %>
+        <%= link_to 'Nouvel animal', new_animal_path %>
     <% end %>
 <%end%>
 <% if action.eql?("show") %>
@@ -22,7 +22,7 @@
 
 
     <% if can? :manage, Animal %>
-        <%= link_to 'Nouveau animal', new_animal_path %>
+        <%= link_to 'Nouvel animal', new_animal_path %>
     <% end %>
 
   <!-- Vue Paysan -->
